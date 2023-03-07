@@ -52,9 +52,9 @@ const NavBar = () => {
                     <Link className='link' to="/">Contact</Link>
                 </div>
 
-                <div className="item">
+                {/* <div className="item">
                     <Link className='link' to="/">Stores</Link>
-                </div>
+                </div> */}
                 
                 <div className="icons">
                     <SearchIcon/>

@@ -3,11 +3,13 @@
     height: calc(100vh - 80px);
     width: 100vw;
     position: relative;
+    overflow: hidden;
 
     .container{
         width: 300vw; // 300vw as we have 3 images -> 3*100=300
         height: 100%;
         display: flex;
+        transition: all 1s ease;
         
         // The mechanism of the slider slideshow.
         transform: translateX(-0vw);
@@ -26,9 +28,10 @@
         position: absolute;
         left: 0;
         right: 0;
-        bottom: 100px;
+        bottom: 50%;
         margin: auto;
-        gap: 10px;
+        gap: 85vw;
+        color: white;
 
         cursor: pointer;
 

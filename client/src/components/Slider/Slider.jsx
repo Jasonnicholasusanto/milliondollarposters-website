@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import "./Slider.scss";
 import EastOutlinedIcon from "@mui/icons-material/EastOutlined";
 import WestOutlinedIcon from "@mui/icons-material/WestOutlined";
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 const Slider = () => {
 
@@ -15,13 +17,17 @@ const Slider = () => {
     ];
 
     const prevSlide = () => {
-        setCurrentSlide(currentSlide === 0)
+        // If the current slide is the first image, then going back is to the last image.
+        setCurrentSlide(currentSlide === 0 ? 2 : (prev) => prev - 1);
     };
-    const nextSlide = () => {};
+
+    const nextSlide = () => {
+        setCurrentSlide(currentSlide === 2 ? 0 : (prev) => prev + 1);
+    };
 
   return (
     <div className="slider">
-        <div className="container">
+        <div className="container" style={{transform:`translateX(-${currentSlide * 100}vw)`}}>
             <img src={data[0]} alt=""/>
             <img src={data[1]} alt=""/>
             <img src={data[2]} alt=""/>
@@ -29,11 +35,11 @@ const Slider = () => {
 
         <div className="icons">
             <div className="icon" onClick={prevSlide}>
-                <WestOutlinedIcon/>
+                <ArrowBackIosIcon/>
             </div>
 
             <div className="icon" onClick={nextSlide}>
-                <EastOutlinedIcon/>
+                <ArrowForwardIosIcon/>
             </div>
         </div>
     </div>
