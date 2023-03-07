@@ -22,6 +22,14 @@
         .center{
             font-size: 30px;
             letter-spacing: 2px;
+
+            .millionDollarPostersLink{
+                font-weight: bold;
+                font-family: 'Roboto Mono', monospace;
+                color: inherit;
+                text-decoration: none;
+                font-size: 25px;
+            }
         }
 
         .right{

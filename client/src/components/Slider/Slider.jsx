@@ -11,18 +11,21 @@ const Slider = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
 
     const data = [
-        "https://images.pexels.com/photos/1549200/pexels-photo-1549200.jpeg?auto=compress&cs=tinyrgb&w=1600",
-        "https://images.pexels.com/photos/949670/pexels-photo-949670.jpeg?auto=compress&cs=tinysrgb&w=1600",
-        "https://images.pexels.com/photos/837140/pexels-photo-837140.jpeg?auto=compress&cs=tinysrgb&w=1600",
+        "https://images.pexels.com/photos/1707640/pexels-photo-1707640.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        "https://images.pexels.com/photos/889839/pexels-photo-889839.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        "https://images.pexels.com/photos/6152258/pexels-photo-6152258.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        "https://images.pexels.com/photos/6198660/pexels-photo-6198660.jpeg?auto=compress&cs=tinysrgb&w=1600",
     ];
+
+    const numSlides = data.length;
 
     const prevSlide = () => {
         // If the current slide is the first image, then going back is to the last image.
-        setCurrentSlide(currentSlide === 0 ? 2 : (prev) => prev - 1);
+        setCurrentSlide(currentSlide === 0 ? numSlides-1 : (prev) => prev - 1);
     };
 
     const nextSlide = () => {
-        setCurrentSlide(currentSlide === 2 ? 0 : (prev) => prev + 1);
+        setCurrentSlide(currentSlide === numSlides-1 ? 0 : (prev) => prev + 1);
     };
 
   return (
@@ -31,6 +34,7 @@ const Slider = () => {
             <img src={data[0]} alt=""/>
             <img src={data[1]} alt=""/>
             <img src={data[2]} alt=""/>
+            <img src={data[3]} alt=""/>
         </div>
 
         <div className="icons">
