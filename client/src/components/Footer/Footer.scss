@@ -44,9 +44,9 @@
             align-items: center;
 
             .logo{
-                color: #2879fe;
+                color: black;
                 font-weight: bold; 
-                font-size: 24px;
+                font-size: 25px;
             }
 
             .copyright{
@@ -55,10 +55,12 @@
                 color: gray;
             }
         }
+
         .right{
             img{
-                height: 50px;
+                height: 45px;
             }
         }
     }
+
 }

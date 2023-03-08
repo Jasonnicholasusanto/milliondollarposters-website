@@ -11,7 +11,7 @@ const NavBar = () => {
   return (
     <div className='navbar'>
         <div className="wrapper">
-            <div className="left">
+            {/* <div className="left">
                 <div className="item">
                     <img src="/img/en.png" alt=""/>
                     <KeyboardArrowDownIcon/>
@@ -20,26 +20,38 @@ const NavBar = () => {
                 <div className="item">
                     <span>AUD</span>
                     <KeyboardArrowDownIcon/>
-                </div>
+                </div> 
 
                 <div className="item">
                     <Link className='link' to="/products/1">NBA Posters</Link>
                 </div>
 
-                {/* <div className="item">
-                    <Link to="/products/2">Aesthetic Posters</Link>
-                </div> */}
+                <div className="item">
+                    <Link className='link' to="/products/2">Aesthetic Posters</Link>
+                </div> 
 
                 <div className="item">
                     <Link className='link' to="/products/3">Other Posters</Link>
                 </div>
-            </div>
+            </div> */}
 
-            <div className="center">
+            {/* <div className="center">
+                <Link className='millionDollarPostersLink' to="/">MillionDollarPosters.</Link>
+            </div> */}
+
+            <div className="left2">
                 <Link className='millionDollarPostersLink' to="/">MillionDollarPosters</Link>
             </div>
 
             <div className="right">
+                <div className="item">
+                    <Link className='link' to="/posters/">Posters</Link>
+                </div>
+
+                <div className="item">
+                    <Link className='link' to="/posters/">Sell</Link>
+                </div>
+
                 <div className="item">
                     <Link className='link' to="/">Homepage</Link>
                 </div>

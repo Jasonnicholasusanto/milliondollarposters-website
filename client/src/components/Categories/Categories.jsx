@@ -9,8 +9,8 @@ const Categories = () => {
             <div className="row">
                 <img src="https://images.pexels.com/photos/818992/pexels-photo-818992.jpeg?auto=compress&cs=tinysrgb&w=1600" alt=""/>
                 <button>
-                    <NavLink className="link" to="/products/1">
-                        Sale
+                    <NavLink className="link" to="/products/sale">
+                        Sale items
                     </NavLink>
                 </button>
             </div>
@@ -21,8 +21,8 @@ const Categories = () => {
                 />
 
                 <button>
-                    <NavLink to="/products/1" className="link">
-                        Women
+                    <NavLink className="link" to="/products/liselotte-augusta">
+                        Liselotte Augusta
                     </NavLink>
                 </button>
             </div>
@@ -37,8 +37,8 @@ const Categories = () => {
                 />
 
                 <button>
-                    <NavLink to="/products/1" className="link">
-                        New Season
+                    <NavLink className="link" to="/products/new">
+                        New Collections
                     </NavLink>
                 </button>
             </div>
@@ -54,8 +54,8 @@ const Categories = () => {
                         />
 
                         <button>
-                            <NavLink to="/products/1" className="link">
-                                Men
+                            <NavLink to="/products/scenic" className="link">
+                                Mokhtar Ioannicius
                             </NavLink>
                         </button>
                     </div>
@@ -69,8 +69,8 @@ const Categories = () => {
                         />
 
                         <button>
-                            <Link to="/products/1" className="link">
-                                Accessories
+                            <Link to="/products/akinyi-nonie" className="link">
+                                Akinyi Nonie
                             </Link>
                         </button>
                     </div>
@@ -83,8 +83,8 @@ const Categories = () => {
                 />
                 
                 <button>
-                    <Link to="/products/1" className="link">
-                        Shoes
+                    <Link to="/products/odin-paul" className="link">
+                        Odin Paul
                     </Link>
                 </button>
             </div>

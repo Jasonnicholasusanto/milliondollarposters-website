@@ -1,6 +1,10 @@
 .navbar{
-    margin-top: 10px;
-    height: 75px;
+    top: 0;
+    // margin-top: 10px;
+    height: 70px;
+    background-color: rgb(30, 30, 30);
+    color: white;
+    // position: sticky;
 
     .wrapper{
         padding: 10px 30px;
@@ -17,6 +21,25 @@
             display: flex;
             align-items: center;
             gap: 25px;
+            margin-top: 5px;
+        }
+
+        .left2{
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            margin-top: 5px;
+
+            font-size: 30px;
+            letter-spacing: 2px;
+
+            .millionDollarPostersLink{
+                font-weight: bold;
+                font-family: 'Roboto Mono', monospace;
+                color: inherit;
+                text-decoration: none;
+                font-size: 25px;
+            }
         }
 
         .center{
@@ -36,11 +59,12 @@
             display: flex;
             align-items: center;
             gap: 25px;
+            margin-top: 5px;
 
             .icons{
                 display: flex;
                 gap: 15px;
-                color: #777;
+                color: #a2a2a2;
                 cursor: pointer;
 
                 .cartIcon{

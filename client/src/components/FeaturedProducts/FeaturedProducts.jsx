@@ -28,6 +28,7 @@ const FeaturedProducts = ({type}) => {
     {
       id: 3,
       img: "https://images.pexels.com/photos/2591761/pexels-photo-2591761.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      img2: "https://images.pexels.com/photos/4113688/pexels-photo-4113688.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       title: "Sunshine Coke",
       artist: "Dallas Finnr",
       isNew: true,

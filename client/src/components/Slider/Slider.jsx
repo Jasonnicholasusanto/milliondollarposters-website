@@ -15,6 +15,7 @@ const Slider = () => {
         "https://images.pexels.com/photos/889839/pexels-photo-889839.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
         "https://images.pexels.com/photos/6152258/pexels-photo-6152258.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
         "https://images.pexels.com/photos/6198660/pexels-photo-6198660.jpeg?auto=compress&cs=tinysrgb&w=1600",
+        "https://images.pexels.com/photos/2228549/pexels-photo-2228549.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
     ];
 
     const numSlides = data.length;
@@ -35,6 +36,7 @@ const Slider = () => {
             <img src={data[1]} alt=""/>
             <img src={data[2]} alt=""/>
             <img src={data[3]} alt=""/>
+            <img src={data[4]} alt=""/>
         </div>
 
         <div className="icons">

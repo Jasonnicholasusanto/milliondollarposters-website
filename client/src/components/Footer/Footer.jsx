@@ -54,6 +54,7 @@ const Footer = () => {
           <img src="/img/payment.png" alt=""></img>
         </div>
       </div>
+
     </div>
   )
 }
