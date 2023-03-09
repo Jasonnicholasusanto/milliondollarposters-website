@@ -17,7 +17,7 @@ const Card = ({item}) => {
 
             <h2>{item.title}</h2>
 
-            <h3>{item.artist}</h3>
+            <h3>By {item.artist}</h3>
 
             <div className="prices">
                 {item.oldPrice != item.price &&

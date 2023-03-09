@@ -1,0 +1,38 @@
+.accordionItem{
+
+    .accordionTitle{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        background-color: black;
+        color: white;
+        padding: 1rem;
+        font-family: 'Roboto Mono', monospace;
+        
+        .accordionLeft{
+            flex-direction: row;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        h1{
+            font-size: 15px;
+        }
+
+        &:hover{
+            background-color: rgb(85, 85, 85);
+            transition: 0.5s;
+        }
+    }
+
+    p{
+        padding: 10px;
+        background-color: rgb(235, 235, 235);
+        font-size: 13px;
+        color: rgb(110, 110, 110);
+    }
+
+}

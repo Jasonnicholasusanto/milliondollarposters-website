@@ -4,12 +4,15 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import BalanceIcon from '@mui/icons-material/Balance';
 import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
-
+import Accordion from '../../components/Accordion/Accordion';
 import Contact from "../../components/Contact/Contact.jsx";
 
 const Product = () => {
   const [selectedImg, setSelectedImg] = useState(0);
-  const [quantity, setQuantity] = useState(1)
+  const [quantity, setQuantity] = useState(1);
+  const [wish, setWish] = useState(false);
+  const [compare, setCompare] = useState(false);
+  
 
   const images = [
     "https://images.unsplash.com/photo-1584448141569-69f342da535c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1041&q=80",
@@ -35,11 +38,13 @@ const Product = () => {
         <div className="right">
           <h1>Montreal Winter Sports</h1>
           <span className="price" >$199.00</span>
-          <p>The annual winter sporting event is here! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat impedit odio dolores repudiandae, earum, dolore sunt maxime temporibus fugit omnis ullam, in cupiditate. Architecto quis molestiae illo quam, corporis vel.</p>
+          <p className='itemDescription'>The annual winter sporting event is here! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat impedit odio dolores repudiandae, earum, dolore sunt maxime temporibus fugit omnis ullam, in cupiditate. Architecto quis molestiae illo quam, corporis vel.</p>
 
           <div className="quantity">
             <button onClick={() => setQuantity(prev => prev === 1 ? 1 : prev-1)}>-</button>
-            {quantity}
+            <p>
+              {quantity}
+            </p>
             <button onClick={() => setQuantity(prev => prev+1)}>+</button>
           </div>
 
@@ -50,32 +55,36 @@ const Product = () => {
 
           <div className="links">
 
-            <div className="item">
+            <button className='wishlist'>
               <FavoriteBorderIcon/>
               ADD TO WISHLIST
-            </div>
+            </button>
 
-            <div className="item">
+            <button className="compare">
               <CompareArrowsIcon/>
               ADD TO COMPARE
-            </div>
+            </button>
+
+            {/* <div className="item">
+              <FavoriteBorderIcon/>
+              ADD TO WISHLIST
+            </div> */}
+
+            {/* <div className="item">
+              <CompareArrowsIcon/>
+              ADD TO COMPARE
+            </div> */}
           </div>
 
           <div className="info">
             <span>Artist: Mina Oberon</span>
-            <span>Date: 15/12/2023</span>
+            <span>Date: 15/01/2023</span>
             <span>Tags: Retro, Sports</span>
           </div>
 
-          {/* <hr /> */}
+          <hr />
 
-          {/* <div className="details">
-            <span>DESCRIPTION</span>
-            <hr />
-            <span>ADDITIONAL INFORMATION</span>
-            <hr />
-            <span>FAQ</span>
-          </div> */}
+          <Accordion/>
 
         </div>
 

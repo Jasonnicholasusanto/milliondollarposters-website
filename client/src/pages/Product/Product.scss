@@ -46,7 +46,7 @@
                 font-weight: bold;
             }
 
-            p{
+            .itemDescription{
                 font-size: 15px;
                 font-weight: 300;
                 text-align: justify;
@@ -57,6 +57,10 @@
                 align-items: center;
                 gap: 10px;
 
+                p{
+                    font-family: 'Roboto Mono', monospace;
+                }
+
                 button{
                     width: 50px;
                     height: 50px;
@@ -65,7 +69,13 @@
                     justify-content: center;
                     cursor: pointer;
                     border: none;
+                    font-family: 'Roboto Mono', monospace;
                     border-radius: 5px;
+
+                    &:hover{
+                        background-color: rgb(170, 170, 170);
+                        transition: 0.5s;
+                    }
                 }
             }
 
@@ -82,18 +92,33 @@
                 gap: 10px;
                 cursor: pointer;
                 font-weight: bold;
+
+                &:hover{
+                    background-color: rgb(110, 110, 110);
+                    transition: 0.5s;
+                }
             }
 
             .links{
                 display: flex;
                 gap: 20px;
 
-                .item{
-                    display: flex;
-                    align-items: center;
+                button{
+                    border-radius: 5px;
                     gap: 10px;
                     font-size: 13px;
-                    color: rgb(110, 110, 110);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: black;
+                    background-color: transparent;
+                    cursor: pointer;
+                    border: none;
+
+                    &:hover{
+                        color: rgb(110, 110, 110);
+                        transition: 0.5s;
+                    }
                 }
             }
 
@@ -103,7 +128,24 @@
                 gap: 10px;
                 color: rgb(110, 110, 110);
                 font-size: 14px;
-                margin-top: 15px; 
+                margin-top: 20px; 
+            }
+
+            .details{
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                color: rgb(110, 110, 110);
+                font-size: 14px;
+
+                hr{
+                    width: 200px;
+                    border: 1px solid lightgray;
+                }
+            }
+
+            hr{
+                border: 1px solid lightgray;
             }
         }
     }
