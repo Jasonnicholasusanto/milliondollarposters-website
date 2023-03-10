@@ -2,10 +2,12 @@ import React, { useState } from 'react'
 import "./Product.scss";
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 import BalanceIcon from '@mui/icons-material/Balance';
 import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
 import Accordion from '../../components/Accordion/Accordion';
 import Contact from "../../components/Contact/Contact.jsx";
+import Dropdown from '../../components/Dropdown/Dropdown';
 
 const Product = () => {
   const [selectedImg, setSelectedImg] = useState(0);
@@ -15,8 +17,8 @@ const Product = () => {
   
 
   const images = [
-    "https://images.unsplash.com/photo-1584448141569-69f342da535c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1041&q=80",
-    "https://images.unsplash.com/photo-1584448062058-0d13ba997eb0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1055&q=80",
+    "/img/oceanic.png",
+    "/img/oceanic-poster.png",
   ];
 
   return (
@@ -36,9 +38,20 @@ const Product = () => {
         </div>
 
         <div className="right">
-          <h1>Montreal Winter Sports</h1>
-          <span className="price" >$199.00</span>
-          <p className='itemDescription'>The annual winter sporting event is here! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat impedit odio dolores repudiandae, earum, dolore sunt maxime temporibus fugit omnis ullam, in cupiditate. Architecto quis molestiae illo quam, corporis vel.</p>
+          <h1>Oceanic</h1>
+          <span className='createdBy'>By MillionDollarPosters</span>
+          <span className="price" >$35.99</span>
+          <p className='itemDescription'>
+            Calming and crashing waves. Seaside aesthetics. Bringing some seasalt in the air to your home.
+            The beach is located in the Maldives and the photography was taken by Shifaaz Shamoon.
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat impedit odio dolores repudiandae, 
+            earum, dolore sunt maxime temporibus fugit omnis ullam, in cupiditate. 
+            Architecto quis molestiae illo quam, corporis vel.
+          </p>
+
+          <hr/>
+
+          <Dropdown/>
 
           <div className="quantity">
             <button onClick={() => setQuantity(prev => prev === 1 ? 1 : prev-1)}>-</button>
@@ -55,31 +68,24 @@ const Product = () => {
 
           <div className="links">
 
-            <button className='wishlist'>
-              <FavoriteBorderIcon/>
+            <button className='wishlist' onClick={() => setWish(!wish)}>
+              {!wish && <FavoriteBorderIcon/>}
+              {wish && <FavoriteIcon/>}
               ADD TO WISHLIST
             </button>
 
-            <button className="compare">
+            {/* <button className="compare" onClick={() => setCompare(!compare)}>
               <CompareArrowsIcon/>
               ADD TO COMPARE
-            </button>
+            </button> */}
 
-            {/* <div className="item">
-              <FavoriteBorderIcon/>
-              ADD TO WISHLIST
-            </div> */}
-
-            {/* <div className="item">
-              <CompareArrowsIcon/>
-              ADD TO COMPARE
-            </div> */}
           </div>
 
           <div className="info">
-            <span>Artist: Mina Oberon</span>
-            <span>Date: 15/01/2023</span>
-            <span>Tags: Retro, Sports</span>
+            <span>Artist: Jason Nicholas Susanto</span>
+            <span>Date: 10/03/2023</span>
+            <span>Sizes: A4 (8"x12"), 11"x14", A3 (29.7x42cm)</span>
+            <span>Tags: Beach, Waves, Summer, Aesthetic</span>
           </div>
 
           <hr />

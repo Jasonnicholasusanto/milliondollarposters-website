@@ -7,7 +7,7 @@ const Products = () => {
 
   // categoryId includes our string object id due to the react-router-dom
   const categoryId = parseInt(useParams().id);
-  const [maxPrice, setMaxPrice] = useState(1000);
+  const [maxPrice, setMaxPrice] = useState(500);
   const [sort, setSort] = useState(null);
 
   return (
@@ -43,9 +43,9 @@ const Products = () => {
         <div className="filterItem">
           <h2>Filter by price</h2>
           <div className="inputItem">
-            <span>1</span>
-            <input type="range" min={1} max={1000} onChange={(e) => setMaxPrice(e.target.value)}/>
-            <span>{maxPrice}</span>
+            <span>$1</span>
+            <input type="range" min={1} max={500} onChange={(e) => setMaxPrice(e.target.value)}/>
+            <span>${maxPrice}</span>
           </div>
         </div>
         

@@ -61,6 +61,17 @@
             gap: 25px;
             margin-top: 5px;
 
+            .item{
+
+                .link{
+
+                    &:hover{
+                        color: #c9c9c9;
+                        transition: 0.3s;
+                    }
+                }
+            }
+
             .icons{
                 display: flex;
                 gap: 15px;
