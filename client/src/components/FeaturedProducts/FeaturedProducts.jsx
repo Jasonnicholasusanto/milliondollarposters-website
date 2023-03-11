@@ -16,11 +16,12 @@ const FeaturedProducts = ({type}) => {
       tag: "Buyer's choice",
       oldPrice: 15,
       price: 15,
+      ratings: [0, 2, 5, 3, 4],
     },
     {
       id: 2,
-      img: "/img/oceanic.png",
-      img2: "/img/oceanic-poster.png",
+      img: "/img/oceanic-poster-display-mockup.png",
+      img2: "/img/oceanic-display.png",
       title: "Oceanic",
       artist: "Jason Nicholas Susanto",
       branding: "MillionDollarPosters",
@@ -29,6 +30,7 @@ const FeaturedProducts = ({type}) => {
       tag: "New",
       oldPrice: 35.99,
       price: 35.99,
+      ratings: [0, 1, 10, 3, 4],
     },
     {
       id: 3,
@@ -42,11 +44,12 @@ const FeaturedProducts = ({type}) => {
       tag: "",
       oldPrice: 158,
       price: 70,
+      ratings: [0, 11, 1, 52, 19],
     },
     {
       id: 4,
       img: "/img/MillionDollarPosters-art-1-mockup.png",
-      img2: "/img/MillionDollarPosters-art-1-poster.png",
+      img2: "/img/MillionDollarPosters-art-no1-display.png",
       title: "MillionDollarPosters Art no.1",
       artist: "Jason Nicholas Susanto",
       branding: "MillionDollarPosters",
@@ -55,6 +58,7 @@ const FeaturedProducts = ({type}) => {
       tag: "Featured",
       oldPrice: 37.15,
       price: 37.15,
+      ratings: [11, 13, 15, 5, 19],
     },
   ];
 

@@ -1,0 +1,29 @@
+.review{
+    font-family: 'Roboto Mono', monospace;
+    max-width: 800px; /* Max width */
+    padding-top: 10px;
+
+    .heading{
+        display: flex;
+        // gap: 30px;
+        align-items: center;
+        padding-bottom: 10px;
+        
+        h1{
+            padding-right: 30px;
+        }
+
+        .stars{
+            display: flex;
+            align-items: baseline;
+        }
+
+        h3{
+            font-size: 15px;
+            color: rgb(120, 120, 120);
+            align-items:self-end;
+        }
+    }
+      
+
+}

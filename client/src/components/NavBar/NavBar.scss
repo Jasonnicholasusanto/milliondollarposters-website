@@ -39,6 +39,11 @@
                 color: inherit;
                 text-decoration: none;
                 font-size: 25px;
+
+                &:hover{
+                    color: #c9c9c9;
+                    transition: 0.3s;
+                }
             }
         }
 

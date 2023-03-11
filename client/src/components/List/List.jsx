@@ -20,8 +20,8 @@ const List = () => {
         },
         {
           id: 2,
-          img: "/img/oceanic.png",
-          img2: "/img/oceanic-poster.png",
+          img: "/img/oceanic-poster-display-mockup.png",
+          img2: "/img/oceanic-display.png",
           title: "Oceanic",
           artist: "Jason Nicholas Susanto",
           branding: "",
@@ -47,7 +47,7 @@ const List = () => {
         {
           id: 4,
           img: "/img/MillionDollarPosters-art-1-mockup.png",
-          img2: "/img/MillionDollarPosters-art-1-poster.png",
+          img2: "/img/MillionDollarPosters-art-no1-display.png",
           title: "MillionDollarPosters Art no.1",
           artist: "Jason Nicholas Susanto",
           branding: "",

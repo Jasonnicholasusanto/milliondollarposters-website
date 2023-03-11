@@ -8,6 +8,7 @@ import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
 import Accordion from '../../components/Accordion/Accordion';
 import Contact from "../../components/Contact/Contact.jsx";
 import Dropdown from '../../components/Dropdown/Dropdown';
+import Review from '../../components/Review/Review';
 
 const Product = () => {
   const [selectedImg, setSelectedImg] = useState(0);
@@ -17,8 +18,8 @@ const Product = () => {
   
 
   const images = [
-    "/img/oceanic.png",
-    "/img/oceanic-poster.png",
+    "/img/oceanic-poster-display-mockup.png",
+    "/img/oceanic-display.png",
   ];
 
   return (
@@ -27,14 +28,23 @@ const Product = () => {
       <div className="wrapper">
 
         <div className="left">
-          <div className="images">
-            <img src={images[0]} alt="" onClick={e => setSelectedImg(0)}/>
-            <img src={images[1]} alt="" onClick={e => setSelectedImg(1)}/>
+
+          <div className="productImages">
+            <div className="images">
+                <img src={images[0]} alt="" onClick={e => setSelectedImg(0)}/>
+                <img src={images[1]} alt="" onClick={e => setSelectedImg(1)}/>
+              </div>
+
+              <div className="mainImg">
+                <img src={images[selectedImg]} alt=""/>
+              </div>
           </div>
 
-          <div className="mainImg">
-            <img src={images[selectedImg]} alt=""/>
+          <div className="reviewSection">
+            <hr/>
+            <Review/>
           </div>
+          
         </div>
 
         <div className="right">
