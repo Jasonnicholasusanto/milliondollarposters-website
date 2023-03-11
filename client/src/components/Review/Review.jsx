@@ -51,7 +51,7 @@ const Review = ({average, ratings}) => {
 
         <div class="row">
             <div class="side">
-                <div>5 star</div>
+                <p>5 star</p>
             </div>
 
             <div class="middle">
@@ -60,10 +60,11 @@ const Review = ({average, ratings}) => {
             </div>
             </div>
             <div class="side right">
-            <div>150</div>
+            <p>({ratings[0]})</p>
             </div>
+
             <div class="side">
-            <div>4 star</div>
+                <p>4 star</p>
             </div>
             <div class="middle">
             <div class="bar-container">
@@ -71,10 +72,11 @@ const Review = ({average, ratings}) => {
             </div>
             </div>
             <div class="side right">
-            <div>63</div>
+            <p>({ratings[1]})</p>
             </div>
+
             <div class="side">
-            <div>3 star</div>
+                <p>3 star</p>
             </div>
             <div class="middle">
             <div class="bar-container">
@@ -82,10 +84,11 @@ const Review = ({average, ratings}) => {
             </div>
             </div>
             <div class="side right">
-            <div>15</div>
+            <p>({ratings[2]})</p>
             </div>
+
             <div class="side">
-            <div>2 star</div>
+                <p>2 star</p>
             </div>
             <div class="middle">
             <div class="bar-container">
@@ -93,10 +96,11 @@ const Review = ({average, ratings}) => {
             </div>
             </div>
             <div class="side right">
-            <div>6</div>
+            <p>({ratings[3]})</p>
             </div>
+
             <div class="side">
-            <div>1 star</div>
+                <p>1 star</p>
             </div>
             <div class="middle">
             <div class="bar-container">
@@ -104,7 +108,7 @@ const Review = ({average, ratings}) => {
             </div>
             </div>
             <div class="side right">
-            <div>20</div>
+            <p>({ratings[4]})</p>
             </div>
         </div>
         </div>
