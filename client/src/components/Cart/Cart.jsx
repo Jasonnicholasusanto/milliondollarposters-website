@@ -1,0 +1,111 @@
+import React from 'react';
+import './Cart.scss';
+import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutline";
+
+const Cart = () => {
+
+    const calculateTotal = () => {
+        var total = 0;
+
+        for(var i=0; i< cartData.length; i++){
+            total += (cartData[i].price * cartData[i].quantity);
+        }
+
+        return total;
+    }
+
+    const cartData = [
+        {
+            id: 1,
+            img: "https://images.pexels.com/photos/3952227/pexels-photo-3952227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+            img2: "https://images.pexels.com/photos/3952231/pexels-photo-3952231.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+            title: "Goodbye Covid-19",
+            artist: "Martin Stewart",
+            branding: "",
+            description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus similique, consequuntur officia accusantium excepturi laborum omnis mollitia tenetur error, quam aperiam harum, atque corporis laudantium velit numquam tempora sequi saepe!",
+            isNew: true,
+            tag: "Buyer's choice",
+            oldPrice: 15,
+            price: 15,
+            quantity: 2,
+            size: '11"x14"',
+        },
+        {
+            id: 2,
+            img: "/img/oceanic-poster-display-mockup.png",
+            img2: "/img/oceanic-display.png",
+            title: "Oceanic",
+            artist: "Jason Nicholas Susanto",
+            branding: "",
+            description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus similique, consequuntur officia accusantium excepturi laborum omnis mollitia tenetur error, quam aperiam harum, atque corporis laudantium velit numquam tempora sequi saepe!",
+            isNew: true,
+            tag: "New",
+            oldPrice: 35.99,
+            price: 35.99,
+            quantity: 1,
+            size: '11"x14"',
+        },
+        {
+            id: 3,
+            img: "/img/MillionDollarPosters-art-1-mockup.png",
+            img2: "/img/MillionDollarPosters-art-no1-display.png",
+            title: "MillionDollarPosters Art no.1",
+            artist: "Jason Nicholas Susanto",
+            branding: "",
+            description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus similique, consequuntur officia accusantium excepturi laborum omnis mollitia tenetur error, quam aperiam harum, atque corporis laudantium velit numquam tempora sequi saepe!",
+            isNew: true,
+            tag: "Featured",
+            oldPrice: 37.15,
+            price: 37.15,
+            quantity: 1,
+            size: 'A3 (29.7x42cm)',
+        },
+    ]
+
+  return (
+    <div className="cart">
+        <h1>Products</h1>
+
+        <hr/>
+
+        {cartData?.map(item=>(
+            <div className="item" key={item.id}>
+                <img src={item.img} alt ="" />
+                
+                <div className="details">
+                    <h1>{item.title.substring(0,30)}</h1>
+                    {/* <p>{item.description?.substring(0, 100)}</p> */}
+                    <p className="price">
+                        ${(item.price * item.quantity).toFixed(2)}
+                    </p>
+
+                    <p className="quantity">
+                        Quantity: {item.quantity}
+                    </p>
+
+                    <p className='size'>
+                        Size: {item.size}
+                    </p>
+                </div>
+                <DeleteOutlinedIcon className='delete'/>
+            </div>
+        ))}
+
+        <hr/>
+
+        <div className="total">
+            <span>Subtotal</span>
+            <span>${calculateTotal().toFixed(2)}</span>
+        </div>
+
+        <div className="buttons">
+            <button className='checkout'>PROCEED TO CHECKOUT</button>
+
+            <button className='shoppingBag'>SHOPPING BAG</button>
+        </div>
+
+    </div>
+  )
+}
+
+export default Cart
