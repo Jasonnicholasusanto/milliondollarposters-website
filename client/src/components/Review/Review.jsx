@@ -17,6 +17,12 @@ const Review = ({average, ratings}) => {
         return numRatings;
     };
 
+    const fiveStar = ((ratings[4]/countRatings())*100) + '%';
+    const fourStar = ((ratings[3]/countRatings())*100) + '%';
+    const threeStar = ((ratings[2]/countRatings())*100) + '%';
+    const twoStar = ((ratings[1]/countRatings())*100) + '%';
+    const oneStar = ((ratings[0]/countRatings())*100) + '%';
+
   return (
     <div className="review">
 
@@ -56,11 +62,11 @@ const Review = ({average, ratings}) => {
 
             <div class="middle">
             <div class="bar-container">
-                <div class="bar-5"></div>
+                <div style={{width: fiveStar, height: "18px"}} class="bar-5"></div>
             </div>
             </div>
             <div class="side right">
-            <p>({ratings[0]})</p>
+            <p>({ratings[4]})</p>
             </div>
 
             <div class="side">
@@ -68,11 +74,11 @@ const Review = ({average, ratings}) => {
             </div>
             <div class="middle">
             <div class="bar-container">
-                <div class="bar-4"></div>
+                <div style={{width: fourStar}} class="bar-4"></div>
             </div>
             </div>
             <div class="side right">
-            <p>({ratings[1]})</p>
+            <p>({ratings[3]})</p>
             </div>
 
             <div class="side">
@@ -80,7 +86,7 @@ const Review = ({average, ratings}) => {
             </div>
             <div class="middle">
             <div class="bar-container">
-                <div class="bar-3"></div>
+                <div style={{width: threeStar}} class="bar-3"></div>
             </div>
             </div>
             <div class="side right">
@@ -92,11 +98,11 @@ const Review = ({average, ratings}) => {
             </div>
             <div class="middle">
             <div class="bar-container">
-                <div class="bar-2"></div>
+                <div style={{width: twoStar}} class="bar-2"></div>
             </div>
             </div>
             <div class="side right">
-            <p>({ratings[3]})</p>
+            <p>({ratings[1]})</p>
             </div>
 
             <div class="side">
@@ -104,11 +110,11 @@ const Review = ({average, ratings}) => {
             </div>
             <div class="middle">
             <div class="bar-container">
-                <div class="bar-1"></div>
+                <div style={{width: oneStar}} class="bar-1"></div>
             </div>
             </div>
             <div class="side right">
-            <p>({ratings[4]})</p>
+            <p>({ratings[0]})</p>
             </div>
         </div>
         </div>
@@ -116,7 +122,7 @@ const Review = ({average, ratings}) => {
 }
 
 Review.defaultProps= {
-    average: 4.3,
+    average: 4,
     ratings: [2, 4, 5, 2, 19]
 }
 
