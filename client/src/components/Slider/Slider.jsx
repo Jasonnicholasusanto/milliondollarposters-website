@@ -40,13 +40,18 @@ const Slider = () => {
         </div>
 
         <div className="icons">
-            <div className="icon" onClick={prevSlide}>
-                <ArrowBackIosIcon/>
+            
+            <div className="iconsContainer">
+                <div className="icon" onClick={prevSlide}>
+                    <ArrowBackIosIcon/>
+                </div>
+
+                <div className="icon" onClick={nextSlide}>
+                    <ArrowForwardIosIcon/>
+                </div>
             </div>
 
-            <div className="icon" onClick={nextSlide}>
-                <ArrowForwardIosIcon/>
-            </div>
+            <h3>Scroll Down</h3>
         </div>
     </div>
   )

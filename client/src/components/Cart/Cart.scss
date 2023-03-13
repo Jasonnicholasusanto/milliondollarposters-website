@@ -1,5 +1,6 @@
 .cart{
     position: absolute;
+    width: 30vw;
     right: 20px;
     top: 80px;
     z-index: 999;
@@ -110,7 +111,7 @@
             font-weight: bold;
     
             &:hover{
-                background-color: rgb(185, 185, 185);
+                text-decoration: underline;
                 transition: 0.5s;
             }
         }

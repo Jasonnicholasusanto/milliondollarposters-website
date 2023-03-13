@@ -1,6 +1,7 @@
 import React from 'react';
 import './Cart.scss';
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutline";
+import { NavLink } from 'react-router-dom';
 
 const Cart = () => {
 
@@ -42,7 +43,7 @@ const Cart = () => {
             tag: "New",
             oldPrice: 35.99,
             price: 35.99,
-            quantity: 1,
+            quantity: 2,
             size: '11"x14"',
         },
         {
@@ -73,10 +74,11 @@ const Cart = () => {
                 <img src={item.img} alt ="" />
                 
                 <div className="details">
-                    <h1>{item.title.substring(0,30)}</h1>
-                    {/* <p>{item.description?.substring(0, 100)}</p> */}
+                    {/* <h1>{item.title.substring(0,21)}</h1> */}
+
+                    { (item.title.length) > 21 ? <h1>{item.title.substring(0,21)}...</h1> : <h1>{item.title.substring(0,24)}</h1>}
                     <p className="price">
-                        ${(item.price * item.quantity).toFixed(2)}
+                        Total price: ${(item.price * item.quantity).toFixed(2)}
                     </p>
 
                     <p className="quantity">
@@ -100,8 +102,10 @@ const Cart = () => {
 
         <div className="buttons">
             <button className='checkout'>PROCEED TO CHECKOUT</button>
-
-            <button className='shoppingBag'>SHOPPING BAG</button>
+            
+            <NavLink to={`/cart`}>
+                <button className='shoppingBag'>SHOPPING BAG</button>
+            </NavLink>
         </div>
 
     </div>

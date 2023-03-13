@@ -83,8 +83,34 @@
                 color: #a2a2a2;
                 cursor: pointer;
 
+                .searchIcon{
+                    &:hover{
+                        color: #e0e0e0;
+                        transition: 0.5s;
+                    }
+                }
+
+                .signInIcon{
+                    &:hover{
+                        color: #e0e0e0;
+                        transition: 0.5s;
+                    }
+                }
+
+                .favIcon{
+                    &:hover{
+                        color: #e0e0e0;
+                        transition: 0.5s;
+                    }
+                }
+
                 .cartIcon{
                     position: relative;
+
+                    &:hover{
+                        color: #e0e0e0;
+                        transition: 0.5s;
+                    }
 
                     span{
 

@@ -12,6 +12,10 @@ const NavBar = () => {
 
     const [open, setOpen] = useState(false);
 
+    const changeVisibility = () => {
+        setOpen(!open);
+    }
+
   return (
     <div className='navbar'>
         <div className="wrapper">
@@ -42,18 +46,19 @@ const NavBar = () => {
                 </div>
                 
                 <div className="icons">
-                    <SearchIcon/>
-                    <PersonOutlineOutlinedIcon/>
-                    <FavoriteBorderOutlinedIcon/>
+                    <SearchIcon className='searchIcon'/>
+                    <PersonOutlineOutlinedIcon className='signInIcon'/>
+                    <FavoriteBorderOutlinedIcon className='favIcon'/>
 
-                    <div className="cartIcon" onMouseEnter={() => setOpen(true)}>
+                    <div className="cartIcon" onClick={changeVisibility}>
                         <ShoppingCartOutlinedIcon/>
                         <span>0</span>
                     </div>
                 </div>
             </div>
         </div>
-        {open && <Cart onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}/>}
+
+        {open && <Cart/>}
     </div>
   )
 }
