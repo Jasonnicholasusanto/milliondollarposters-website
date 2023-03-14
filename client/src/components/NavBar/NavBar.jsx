@@ -50,9 +50,16 @@ const NavBar = () => {
                     <PersonOutlineOutlinedIcon className='signInIcon'/>
                     <FavoriteBorderOutlinedIcon className='favIcon'/>
 
-                    <div className="cartIcon" onClick={changeVisibility}>
+                    {/* <div className="cartIcon" onClick={changeVisibility}>
                         <ShoppingCartOutlinedIcon/>
                         <span>0</span>
+                    </div> */}
+
+                    <div className="cartIcon">
+                        <Link className="link" to="/cart">
+                            <ShoppingCartOutlinedIcon/>
+                            <span>0</span>
+                        </Link>
                     </div>
                 </div>
             </div>

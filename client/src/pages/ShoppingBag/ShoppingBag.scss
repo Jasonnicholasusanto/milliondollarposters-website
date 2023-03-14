@@ -1,3 +1,91 @@
 .shoppingBag{
-    
+
+    .container{
+
+        padding: 30px 100px;  
+
+        .header{
+            font-weight: bold;
+            font-size: 35px;
+            // margin-bottom: 15px;
+        }
+
+        hr{
+            width: 100%;
+            border: 2px solid rgb(100, 100, 100);
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .items{
+            gap: 10px;
+            margin: 20px;
+
+            .item{
+                display: flex;
+                align-items: center;
+                gap: 40px;
+                margin-bottom: 30px;
+                margin-top: 30px;
+                text-decoration:none;
+        
+                img{
+                    width: 120px;
+                    height: 170px;
+                    cursor: pointer;
+
+                    &:hover{
+                        transform: scale(1.1);
+                    }
+                }
+
+                .details{
+                    flex: 100;
+
+                    h1{
+                        font-size: 25px;
+                        color: gray;
+                        margin-bottom: 20px;
+                        cursor: pointer;
+
+                        &:hover{
+                            color: rgb(50, 50, 50);
+                            transition: 0.5s;
+                        }
+                    }
+
+                    p{
+                        color: black;
+                        font-size: 15px;
+                        margin-bottom: 8px;
+                    }
+                }
+
+                .delete{
+                    color: rgb(181, 2, 2);
+                    font-size: 25px;
+                    cursor: pointer;
+
+                    &:hover{
+                        color: rgb(234, 28, 28);
+                        transition: 0.5s;
+                    }
+                }
+            }
+        }
+
+        .total{
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+            font-size: 18px;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            color: black;
+
+            span{
+                font-size: 25px;
+            }
+        }
+    }
 }
