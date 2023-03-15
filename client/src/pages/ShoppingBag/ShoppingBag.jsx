@@ -1,10 +1,16 @@
-import React from 'react';
+import { React, useState } from 'react';
 import './ShoppingBag.scss';
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutline";
 import Contact from '../../components/Contact/Contact.jsx';
 import { Link } from 'react-router-dom';
 
 const ShoppingBag = () => {
+
+  const [quantity, setQuantity] = useState(1);
+
+  const deleteItem = () => {
+
+  }
 
   const calculateTotal = () => {
     var total = 0;
@@ -73,32 +79,44 @@ const ShoppingBag = () => {
 
         <div className="items">
           {cartData?.map(item=>(
-              <Link className="item" key={item.id} to="/product/1">
-              <img src={item.img} alt =""/>
-              
-              <div className="details">
-                  {/* <h1>{item.title.substring(0,21)}</h1> */}
+              <div className="item" key={item.id}>
 
-                  { (item.title.length) > 60 ? <h1>{item.title.substring(0,57)}...</h1> : <h1>{item.title.substring(0,60)}</h1>}
+                <Link className="itemLink" to="/product/1">
+                  <img src={item.img} alt =""/>
+                
+                  <div className="details">
+                      {/* <h1>{item.title.substring(0,21)}</h1> */}
 
-                  <p className="branding">
-                      By: {item.branding}
-                  </p>
-                  
-                  <p className="price">
-                      Total price: ${(item.price * item.quantity).toFixed(2)}
-                  </p>
+                      { (item.title.length) > 50 ? <h1>{item.title.substring(0,47)}...</h1> : <h1>{item.title.substring(0,50)}</h1>}
 
-                  <p className="quantity">
-                      Quantity: {item.quantity}
-                  </p>
+                      <p className="branding">
+                          By: {item.branding}
+                      </p>
+                      
+                      <p className="price">
+                          Total price: ${(item.price * item.quantity).toFixed(2)}
+                      </p>
 
-                  <p className='size'>
-                      Size: {item.size}
+                      {/* <p className="quantity">
+                          Quantity: {item.quantity}
+                      </p> */}
+
+                      <p className='size'>
+                          Size: {item.size}
+                      </p>
+                  </div>
+                </Link>
+
+                <div className="quantity">
+                  <button onClick={() => setQuantity(prev => prev === 1 ? 1 : prev-1)}>-</button>
+                  <p>
+                    {item.quantity}
                   </p>
-              </div>
-              <DeleteOutlinedIcon className='delete'/>
-          </Link>
+                  <button onClick={() => setQuantity(prev => prev+1)}>+</button>
+                </div>
+
+                <DeleteOutlinedIcon className='delete' onClick={deleteItem}/>
+          </div>
           ))}
         </div>
 

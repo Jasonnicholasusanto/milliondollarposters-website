@@ -16,7 +16,6 @@ const Product = () => {
   const [wish, setWish] = useState(false);
   const [compare, setCompare] = useState(false);
   
-
   const images = [
     "/img/oceanic-poster-display-mockup.png",
     "/img/oceanic-display.png",
