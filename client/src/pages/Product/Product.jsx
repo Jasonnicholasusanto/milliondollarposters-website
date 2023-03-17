@@ -10,6 +10,21 @@ import Contact from "../../components/Contact/Contact.jsx";
 import Dropdown from '../../components/Dropdown/Dropdown';
 import Review from '../../components/Review/Review';
 
+import Button from '@mui/material/Button';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+const theme = createTheme({
+  palette: {
+      primary: {
+      main: '#000000',
+      darker: '#000000',
+      },
+      secondary: {
+      main: '#ffffff',
+      },
+  },
+});
+
 const Product = () => {
   const [selectedImg, setSelectedImg] = useState(0);
   const [quantity, setQuantity] = useState(1);
@@ -74,6 +89,16 @@ const Product = () => {
             <AddShoppingCartIcon/>
             ADD TO CART
           </button>
+
+          {/* <Button
+            type="submit"
+            fullWidth="false"
+            variant="contained"
+            sx={{ mt: 3, mb: 2 }}
+            // color={theme.palette.primary.main}
+          >
+            ADD TO CART
+          </Button> */}
 
           <div className="links">
 

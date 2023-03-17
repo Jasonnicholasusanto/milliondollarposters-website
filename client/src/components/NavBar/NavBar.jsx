@@ -33,9 +33,9 @@ const NavBar = () => {
                     <Link className='link' to="/">Sell</Link>
                 </div>
 
-                <div className="item">
+                {/* <div className="item">
                     <Link className='link' to="/">Homepage</Link>
-                </div>
+                </div> */}
 
                 <div className="item">
                     <Link className='link' to="/">About</Link>
@@ -46,10 +46,23 @@ const NavBar = () => {
                 </div>
                 
                 <div className="icons">
-                    <SearchIcon className='searchIcon'/>
-                    <PersonOutlineOutlinedIcon className='signInIcon'/>
-                    <FavoriteBorderOutlinedIcon className='favIcon'/>
 
+                    <div className='searchIcon'>
+                        <Link className="link" to="/">
+                            <SearchIcon/>
+                        </Link>
+                    </div>
+
+                    <div className='signInIcon'>
+                        <Link className="link" to="/sign-in">
+                            <PersonOutlineOutlinedIcon/>
+                        </Link>
+                    </div>
+                    
+                    <div className="favouriteIcon">
+                        <FavoriteBorderOutlinedIcon className='favIcon'/>
+                    </div>
+                    
                     {/* <div className="cartIcon" onClick={changeVisibility}>
                         <ShoppingCartOutlinedIcon/>
                         <span>0</span>
