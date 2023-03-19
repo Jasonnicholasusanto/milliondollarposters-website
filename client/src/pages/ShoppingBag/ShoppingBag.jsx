@@ -3,6 +3,7 @@ import './ShoppingBag.scss';
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutline";
 import Contact from '../../components/Contact/Contact.jsx';
 import { Link } from 'react-router-dom';
+import {NavLink} from "react-router-dom";
 
 const ShoppingBag = () => {
 
@@ -126,6 +127,15 @@ const ShoppingBag = () => {
           <span>Subtotal</span>
           <span>${calculateTotal().toFixed(2)}</span>
         </div>
+        
+        <div className="checkoutButton">
+          <div className="spacing"></div>
+
+          <Link className='link' to="checkout">
+            <button>Continue to checkout</button>
+          </Link>
+        </div>
+
       </div>
 
         <Contact />

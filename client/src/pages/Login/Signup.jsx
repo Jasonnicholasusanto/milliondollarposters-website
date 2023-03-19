@@ -22,7 +22,8 @@ function Copyright(props) {
       <Link color="inherit" href="https://mui.com/">
         MillionDollarPosters
       </Link>{' '}
-      {new Date().getFullYear()}
+      {/* {new Date().getFullYear()} */}
+      2023
       {'.'}
     </Typography>
   );

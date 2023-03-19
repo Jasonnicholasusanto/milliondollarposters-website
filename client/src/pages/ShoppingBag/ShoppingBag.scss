@@ -126,5 +126,38 @@
                 font-size: 25px;
             }
         }
+
+        .checkoutButton{
+            display: flex;
+            flex: 10;
+
+            .spacing{
+                flex: 10;
+            }
+
+            .link{
+                margin-top: 15px;
+
+                button{
+                    align-items: center;
+                    justify-content: center;
+                    padding: 15px 80px;
+                    border: none;
+                    border-radius: 5px;
+                    color: white;
+                    background-color: black;
+                    font-size: 15px;
+                    font-family: 'Roboto Mono', monospace;
+                    cursor: pointer;
+    
+                    &:hover{
+                        background-color: rgb(110, 110, 110);
+                        transition: 0.5s;
+                    }
+                }
+
+            }
+            
+        }
     }
 }

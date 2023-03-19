@@ -30,7 +30,7 @@ const NavBar = () => {
                 </div>
 
                 <div className="item">
-                    <Link className='link' to="/">Sell</Link>
+                    <Link className='link' to="/sign-in">Sell</Link>
                 </div>
 
                 {/* <div className="item">

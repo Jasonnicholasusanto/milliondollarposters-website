@@ -30,12 +30,12 @@ const Products = () => {
 
           <div className="inputItem">
             <input type="checkbox" id="3" value={3}/>
-            <label htmlFor="3">MillionDollarPosters</label>
+            <label htmlFor="3">Movie Quotes</label>
           </div>
 
           <div className="inputItem">
             <input type="checkbox" id="4" value={4}/>
-            <label htmlFor="4">Klemen Pinja</label>
+            <label htmlFor="4">Scenery</label>
           </div>
 
         </div>

@@ -14,6 +14,7 @@ import "./app.scss";
 import ShoppingBag from "./pages/ShoppingBag/ShoppingBag";
 import SignUp from "./pages/Login/Signup";
 import Login from "./pages/Login/Login";
+import Checkout from "./pages/Checkout/Checkout";
 
 // Customizing the layout of the web page: Navigation bar and Footer stays the same
 // in all pages. However, we utilize Outlet from react-router-dom to change the web pages'
@@ -62,6 +63,10 @@ const router = createBrowserRouter([
         path:"/sign-up",
         element:<SignUp/>,
       },
+      {
+        path:"/cart/checkout",
+        element:<Checkout/>
+      }
     ]
   },
 

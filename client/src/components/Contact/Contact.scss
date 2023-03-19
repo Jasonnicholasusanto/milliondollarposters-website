@@ -4,6 +4,7 @@
     padding: 15px;
     display: flex;
     justify-content: center;
+    width: 100%;
 
     .wrapper{
         width: 55%;
@@ -11,19 +12,22 @@
         align-items: center;
         justify-content: space-between;
 
-        input{
-            padding: 10px;
-            width: 15vw;
-            border: none;
-            border-radius: 5px 0 0 5px;
-        }
-
-        button{
-            padding: 10.4px;
-            border: none;
-            border-radius: 0 5px 5px 0;
-            cursor: pointer;
-            background-color: lightgray;
+        .mail{
+            input{
+                padding: 10px;
+                width: 15vw;
+                border: none;
+                border-radius: 5px 0 0 5px;
+            }
+    
+            button{
+                padding: 10.4px;
+                width: 8vw;
+                border: none;
+                border-radius: 0 5px 5px 0;
+                cursor: pointer;
+                background-color: lightgray;
+            }
         }
 
         .icons{
