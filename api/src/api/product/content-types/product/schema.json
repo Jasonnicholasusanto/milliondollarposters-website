@@ -60,7 +60,12 @@
       "type": "date"
     },
     "tag": {
-      "type": "string"
+      "type": "enumeration",
+      "enum": [
+        "normal",
+        "featured",
+        "trending"
+      ]
     },
     "categories": {
       "type": "relation",
