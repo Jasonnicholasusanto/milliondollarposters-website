@@ -40,6 +40,9 @@
         "audios"
       ]
     },
+    "oldPrice": {
+      "type": "decimal"
+    },
     "price": {
       "type": "decimal"
     },

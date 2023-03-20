@@ -50,7 +50,7 @@ const List = () => {
           img2: "/img/milliondollarposters-art-1-display.png",
           title: "MillionDollarPosters Art no.1",
           artist: "Jason Nicholas Susanto",
-          branding: "",
+          branding: "MillionDollarPosters",
           description: "",
           isNew: true,
           tag: "Featured",
