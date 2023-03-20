@@ -58,7 +58,7 @@ const ShoppingBag = () => {
         id: 3,
         img: "/img/MillionDollarPosters-art-1-mockup.png",
         img2: "/img/MillionDollarPosters-art-no1-display.png",
-        title: "MillionDollarPosters Art no.1 zzzzzzzzzzzzzzzzzzhsdfgsgfisciwrciwibvisduvhsihrvubvsbdfvbsiruhirsubvzzzzzzzzzzzzzzzzz",
+        title: "MillionDollarPosters Art no.1",
         artist: "Jason Nicholas Susanto",
         branding: "MillionDollarPosters",
         description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus similique, consequuntur officia accusantium excepturi laborum omnis mollitia tenetur error, quam aperiam harum, atque corporis laudantium velit numquam tempora sequi saepe!",
