@@ -33,9 +33,9 @@ const FeaturedProducts = ({type}) => {
     },
     {
       id: 3,
-      img: "/img/With-great-power-comes-great-responsibility-spiderman-mockup.png",
-      img2: "/img/With-great-power-comes-great-responsibility-spiderman-display.png",
-      title: "With great power comes great responsibility - Spiderman",
+      img: "/img/milliondollarposters-waves-1-mockup.png",
+      img2: "/img/milliondollarposters-waves-1-display.png",
+      title: "Gradient Waves art No.1",
       artist: "Jason Nicholas Susanto",
       branding: "MillionDollarPosters",
       description: "",

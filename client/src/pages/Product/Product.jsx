@@ -26,15 +26,91 @@ const theme = createTheme({
 });
 
 const Product = () => {
-  const [selectedImg, setSelectedImg] = useState(0);
+
+  const productData = {
+    id: 1,
+    img: "/img/With-great-power-comes-great-responsibility-spiderman-mockup.png",
+    img2: "/img/With-great-power-comes-great-responsibility-spiderman-display.png",
+    title: "With great power comes great responsibility — Spider-Man",
+    artist: "Jason Nicholas Susanto",
+    branding: "MillionDollarPosters",
+    description: "This poster is for all those Spider-Man fans out there. Although Uncle Ben (and Aunt May) passed away, we believe his famous quote and spirit will continue to go on. May Peter Parker continue to uphold his responsibilities and stay as a friendly neighbourhood Spider-Man!",
+    isNew: true,
+    tag: "Featured",
+    oldPrice: 50,
+    price: 35,
+    categories: ["Abstract", "Colours"],
+    subcategories: ["Waves"],
+    date: new Date("March 19, 2023"),
+    sizes: ['11"x14"', 'A3 size (29.7x42 cm)', '12"x16"'],
+  }
+
+  // To convert Date data type to String.
+  Date.prototype.yyyymmdd = function() {
+    var mm = this.getMonth() + 1; // getMonth() is zero-based
+    var dd = this.getDate();
+  
+    return [this.getFullYear(),
+            (mm>9 ? '' : '0') + mm,
+            (dd>9 ? '' : '0') + dd
+           ].join('-');
+  };
+
+  // To retrieve the poster's creation date.
+  const productDate = () => {
+    return productData.date.yyyymmdd();
+  }
+
+  // To retrieve the poster's available sizes.
+  const productSizes = () => {
+    var sizes = "";
+
+    for(var i=0; i<productData.sizes.length; i++){
+
+      if(i+1 == productData.sizes.length){
+        sizes += productData.sizes[i];
+      } else {
+        sizes = sizes + productData.sizes[i] + ", ";
+      }
+    }
+
+    return sizes;
+  }
+
+  const productTags = () => {
+    var tags = "";
+
+    for(var i=0; i<productData.categories.length; i++){
+
+      if(productData.subcategories.length === 0){
+        if(i+1 == productData.categories.length){
+          tags += productData.categories[i];
+        } else {
+          tags += productData.categories[i] + ", ";
+        }
+      } else {
+        tags += productData.categories[i] + ", ";
+      }
+
+    }
+
+    for(var i=0; i<productData.subcategories.length; i++){
+
+      if(i+1 == productData.subcategories.length){
+        tags += productData.subcategories[i];
+      } else {
+        tags += productData.subcategories[i] + ", ";
+      }
+      
+    }
+
+    return tags;
+  }
+
+  const [selectedImg, setSelectedImg] = useState(productData.img);
   const [quantity, setQuantity] = useState(1);
   const [wish, setWish] = useState(false);
   const [compare, setCompare] = useState(false);
-  
-  const images = [
-    "/img/oceanic-poster-display-mockup.png",
-    "/img/oceanic-display.png",
-  ];
 
   return (
     <div className="product">
@@ -45,12 +121,12 @@ const Product = () => {
 
           <div className="productImages">
             <div className="images">
-                <img src={images[0]} alt="" onClick={e => setSelectedImg(0)}/>
-                <img src={images[1]} alt="" onClick={e => setSelectedImg(1)}/>
+                <img src={productData.img} alt="" onClick={e => setSelectedImg(productData.img)}/>
+                <img src={productData.img2} alt="" onClick={e => setSelectedImg(productData.img2)}/>
               </div>
 
               <div className="mainImg">
-                <img src={images[selectedImg]} alt=""/>
+                <img src={selectedImg} alt=""/>
               </div>
           </div>
 
@@ -63,14 +139,10 @@ const Product = () => {
 
         <div className="right">
           <h1>Oceanic</h1>
-          <span className='createdBy'>By MillionDollarPosters</span>
-          <span className="price" >$35.99</span>
+          <span className='createdBy'>By {productData.branding}</span>
+          <span className="price" >${productData.price.toFixed(2)}</span>
           <p className='itemDescription'>
-            Calming and crashing waves. Seaside aesthetics. Bringing some seasalt in the air to your home.
-            The beach is located in the Maldives and the photography was taken by Shifaaz Shamoon.
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat impedit odio dolores repudiandae, 
-            earum, dolore sunt maxime temporibus fugit omnis ullam, in cupiditate. 
-            Architecto quis molestiae illo quam, corporis vel.
+            {productData.description==="" ? "There is no description for this poster." : productData.description}
           </p>
 
           <hr/>
@@ -117,9 +189,9 @@ const Product = () => {
 
           <div className="info">
             <span>Artist: Jason Nicholas Susanto</span>
-            <span>Date: 10/03/2023</span>
-            <span>Sizes: A4 (8"x12"), 11"x14", A3 (29.7x42cm)</span>
-            <span>Tags: Beach, Waves, Summer, Aesthetic</span>
+            <span>Date: {productDate()}</span>
+            <span>Sizes: {productSizes()}</span>
+            <span>Tags: {productTags()}</span>
           </div>
 
           <hr />
