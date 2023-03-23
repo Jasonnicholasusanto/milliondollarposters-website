@@ -17,6 +17,7 @@ const FeaturedProducts = ({type}) => {
       tag: "Featured",
       oldPrice: 50,
       price: 35,
+      rating: [3, 19, 152, 568, 0],
     },
     {
       id: 2,
@@ -30,6 +31,7 @@ const FeaturedProducts = ({type}) => {
       tag: "New",
       oldPrice: 35.99,
       price: 35.99,
+      rating: [3, 19, 0, 0, 1],
     },
     {
       id: 3,
@@ -43,6 +45,7 @@ const FeaturedProducts = ({type}) => {
       tag: "Featured",
       oldPrice: 80,
       price: 40,
+      rating: [3, 19, 2, 1, 5],
     },
     {
       id: 4,
@@ -56,6 +59,7 @@ const FeaturedProducts = ({type}) => {
       tag: "Featured",
       oldPrice: 37.15,
       price: 37.15,
+      rating: [0, 1, 0, 2, 0],
     },
   ];
 

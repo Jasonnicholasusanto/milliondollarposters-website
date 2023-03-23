@@ -54,6 +54,17 @@
         font-weight: 200;
     }
 
+    .rating{
+        display: flex;
+        align-items: center;
+        font-size: 10px;
+
+        .numRatings{
+            font-size: 10px;
+            color: gray;
+        }
+    }
+
     .prices{
         display: flex;
         gap: 20px;

@@ -17,6 +17,7 @@ const List = () => {
           tag: "Featured",
           oldPrice: 50,
           price: 35,
+          rating: [2, 8, 10, 5, 29],
         },
         {
           id: 2,
@@ -30,6 +31,7 @@ const List = () => {
           tag: "New",
           oldPrice: 35.99,
           price: 35.99,
+          rating: [0, 0, 1, 5, 9],
         },
         {
           id: 3,
@@ -43,6 +45,7 @@ const List = () => {
           tag: "Featured",
           oldPrice: 80,
           price: 40,
+          rating: [0, 4, 0, 9, 39],
         },
         {
           id: 4,
@@ -56,6 +59,7 @@ const List = () => {
           tag: "Featured",
           oldPrice: 37.15,
           price: 37.15,
+          rating: [1, 0, 12, 0, 35],
         },
         {
           id: 5,
@@ -69,6 +73,7 @@ const List = () => {
           tag: "Featured",
           oldPrice: 35.99,
           price: 35.99,
+          rating: [0, 4, 10, 5, 3],
         },
         {
           id: 6,
@@ -82,6 +87,7 @@ const List = () => {
           tag: "Featured",
           oldPrice: 35.99,
           price: 35.99,
+          rating: [0, 8, 9, 9, 51],
         },
         {
           id: 7,
@@ -95,6 +101,7 @@ const List = () => {
           tag: "Featured",
           oldPrice: 35.99,
           price: 35.99,
+          rating: [0, 8, 9, 19, 4],
         },
         {
           id: 8,
@@ -108,14 +115,16 @@ const List = () => {
           tag: "Featured",
           oldPrice: 80,
           price: 45,
+          rating: [3, 19, 152, 568, 999],
         },
       ];
 
     return (
         <div className="list">
             {data?.map(item=>(
-                <Card item={item} key={item.id}/>
+              <Card item={item} key={item.id}/>
             ))}
+
         </div>
     )
 }
