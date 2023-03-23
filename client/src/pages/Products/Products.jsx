@@ -25,17 +25,27 @@ const Products = () => {
 
           <div className="inputItem">
             <input type="checkbox" id="2" value={2}/>
-            <label htmlFor="2">Sale</label>
+            <label htmlFor="2">Featured</label>
           </div>
 
           <div className="inputItem">
             <input type="checkbox" id="3" value={3}/>
-            <label htmlFor="3">Movie Quotes</label>
+            <label htmlFor="3">Trending</label>
           </div>
 
           <div className="inputItem">
             <input type="checkbox" id="4" value={4}/>
-            <label htmlFor="4">Scenery</label>
+            <label htmlFor="4">Sale</label>
+          </div>
+
+          <div className="inputItem">
+            <input type="checkbox" id="5" value={5}/>
+            <label htmlFor="5">Movie Quotes</label>
+          </div>
+
+          <div className="inputItem">
+            <input type="checkbox" id="6" value={6}/>
+            <label htmlFor="6">Scenery</label>
           </div>
 
         </div>

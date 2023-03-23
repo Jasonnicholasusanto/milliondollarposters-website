@@ -15,6 +15,8 @@ import ShoppingBag from "./pages/ShoppingBag/ShoppingBag";
 import SignUp from "./pages/Login/Signup";
 import Login from "./pages/Login/Login";
 import Checkout from "./pages/Checkout/Checkout";
+import AboutUs from "./pages/AboutUs/AboutUs";
+import ContactUs from "./pages/ContactUs/ContactUs";
 
 // Customizing the layout of the web page: Navigation bar and Footer stays the same
 // in all pages. However, we utilize Outlet from react-router-dom to change the web pages'
@@ -40,6 +42,16 @@ const router = createBrowserRouter([
         path:"/",
         element:<Home/>,
       },
+      // The About Us page route
+      {
+        path:"/about-us/",
+        element:<AboutUs/>,
+      },
+      // The Contact Us page route
+      {
+        path:"/contact-us/",
+        element:<ContactUs/>,
+      },
       // Products page route
       {
         // path:"/products/:id",
@@ -52,19 +64,19 @@ const router = createBrowserRouter([
         element:<Product/>,
       },
       {
-        path:"/cart",
+        path:"/cart/",
         element:<ShoppingBag/>,
       },
       {
-        path:"/sign-in",
+        path:"/sign-in/",
         element:<Login/>,
       },
       {
-        path:"/sign-up",
+        path:"/sign-up/",
         element:<SignUp/>,
       },
       {
-        path:"/cart/checkout",
+        path:"/cart/checkout/",
         element:<Checkout/>
       }
     ]
