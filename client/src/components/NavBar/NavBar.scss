@@ -42,7 +42,8 @@
 
                 &:hover{
                     color: #c9c9c9;
-                    transition: 0.3s;
+                    transition: 0.5s;
+                    padding-left: 10px;
                 }
             }
         }
@@ -72,7 +73,8 @@
 
                     &:hover{
                         color: #c9c9c9;
-                        transition: 0.3s;
+                        transition: all 0.5s ease;
+                        padding-bottom: 10px;
                     }
                 }
             }

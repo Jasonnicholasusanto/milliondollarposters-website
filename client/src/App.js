@@ -10,6 +10,7 @@ import Products from "./pages/Products/Products";
 import Product from "./pages/Product/Product";
 import NavBar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
+import Footer2 from "./components/Footer2/Footer2";
 import "./app.scss";
 import ShoppingBag from "./pages/ShoppingBag/ShoppingBag";
 import SignUp from "./pages/Login/Signup";
@@ -17,6 +18,8 @@ import Login from "./pages/Login/Login";
 import Checkout from "./pages/Checkout/Checkout";
 import AboutUs from "./pages/AboutUs/AboutUs";
 import ContactUs from "./pages/ContactUs/ContactUs";
+import FAQ from "./pages/FAQ/FAQ";
+import FAQs from "./pages/FAQs/FAQs";
 
 // Customizing the layout of the web page: Navigation bar and Footer stays the same
 // in all pages. However, we utilize Outlet from react-router-dom to change the web pages'
@@ -26,7 +29,8 @@ const Layout = () => {
     <div className="app">
       <NavBar/>
       <Outlet/>
-      <Footer/>
+      <Footer2/>
+      {/* <Footer/> */}
     </div>
   )
 }
@@ -51,6 +55,11 @@ const router = createBrowserRouter([
       {
         path:"/contact-us/",
         element:<ContactUs/>,
+      },
+      // The FAQs page route
+      {
+        path:"/frequently-asked-questions/",
+        element:<FAQs/>,
       },
       // Products page route
       {

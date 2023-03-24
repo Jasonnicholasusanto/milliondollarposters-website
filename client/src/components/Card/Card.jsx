@@ -40,7 +40,8 @@ const Card = ({item}) => {
                 <img src={item.img2} alt="" className="secondImg" />
             </div>
 
-            <h2>{item.title}</h2>
+            { (item.title.length) > 58 ? <h2>{item.title.substring(0,55)}...</h2> : <h2>{item.title.substring(0,58)}</h2>}
+
 
 
             {item.branding === "" ? <h3>By {item.artist}</h3> : <h3>By {item.branding}</h3>}

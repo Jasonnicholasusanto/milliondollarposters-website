@@ -28,7 +28,6 @@ const Contact = () => {
                 </a>
                 
                 <TwitterIcon/>
-                <GoogleIcon/>
             </div>
         </div>
     </div>

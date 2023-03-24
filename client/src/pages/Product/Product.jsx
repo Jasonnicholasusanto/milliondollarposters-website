@@ -138,7 +138,7 @@ const Product = () => {
         </div>
 
         <div className="right">
-          <h1>Oceanic</h1>
+          <h1>{productData.title}</h1>
           <span className='createdBy'>By {productData.branding}</span>
           <span className="price" >${productData.price.toFixed(2)}</span>
           <p className='itemDescription'>
@@ -199,11 +199,7 @@ const Product = () => {
           <Accordion/>
 
         </div>
-
       </div>
-
-      {/* <hr className="lineBreak"/> */}
-      {/* <div className="footerBar"></div> */}
 
       <Contact/>
 
