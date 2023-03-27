@@ -20,6 +20,8 @@ import AboutUs from "./pages/AboutUs/AboutUs";
 import ContactUs from "./pages/ContactUs/ContactUs";
 import FAQ from "./pages/FAQ/FAQ";
 import FAQs from "./pages/FAQs/FAQs";
+import ComingSoon from "./pages/ComingSoon/ComingSoon";
+import LaunchingSoon from "./pages/LaunchingSoon/LaunchingSoon";
 
 // Customizing the layout of the web page: Navigation bar and Footer stays the same
 // in all pages. However, we utilize Outlet from react-router-dom to change the web pages'
@@ -27,10 +29,11 @@ import FAQs from "./pages/FAQs/FAQs";
 const Layout = () => {
   return (
     <div className="app">
-      <NavBar/>
+      {/* <ComingSoon/> */}
+      <LaunchingSoon/>
+      {/* <NavBar/>
       <Outlet/>
-      <Footer2/>
-      {/* <Footer/> */}
+      <Footer2/> */}
     </div>
   )
 }

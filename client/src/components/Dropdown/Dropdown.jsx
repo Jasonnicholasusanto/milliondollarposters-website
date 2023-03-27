@@ -2,9 +2,9 @@ import React from 'react';
 import './Dropdown.scss';
 import StraightenIcon from '@mui/icons-material/Straighten';
 
-const Dropdown = () => {
+const Dropdown = ({ sizesData }) => {
 
-  const sizesData = ['11"x14"', 'A3 size (29.7x42 cm)', '12"x16"'];
+  // const sizesData = ['11"x14"', 'A3 size (29.7x42 cm)', '12"x16"'];
 
   return (
     <div className="dropdown">

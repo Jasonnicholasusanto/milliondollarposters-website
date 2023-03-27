@@ -68,12 +68,12 @@ const Card = ({item}) => {
             
 
             <div className="prices">
-                {item.oldPrice !== item.price &&
+                {item.prices[0].oldPrice !== item.prices[0].price &&
                   <h3 className='oldPrice'>
-                    ${item.oldPrice}
+                    ${item.prices[0].oldPrice.toFixed(2)}
                   </h3>
                 }
-                <h3>${item.price}</h3>
+                <h3>${item.prices[0].price.toFixed(2)}</h3>
             </div>
         </div>
     </NavLink>

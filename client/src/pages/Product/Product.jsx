@@ -7,10 +7,10 @@ import BalanceIcon from '@mui/icons-material/Balance';
 import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
 import Accordion from '../../components/Accordion/Accordion';
 import Contact from "../../components/Contact/Contact.jsx";
-import Dropdown from '../../components/Dropdown/Dropdown';
 import Review from '../../components/Review/Review';
+import { testProductData } from '../../testData/testProductData';
+import StraightenIcon from '@mui/icons-material/Straighten';
 
-import Button from '@mui/material/Button';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const theme = createTheme({
@@ -27,24 +27,6 @@ const theme = createTheme({
 
 const Product = () => {
 
-  const productData = {
-    id: 1,
-    img: "/img/With-great-power-comes-great-responsibility-spiderman-mockup.png",
-    img2: "/img/With-great-power-comes-great-responsibility-spiderman-display.png",
-    title: "With great power comes great responsibility — Spider-Man",
-    artist: "Jason Nicholas Susanto",
-    branding: "MillionDollarPosters",
-    description: "This poster is for all those Spider-Man fans out there. Although Uncle Ben (and Aunt May) passed away, we believe his famous quote and spirit will continue to go on. May Peter Parker continue to uphold his responsibilities and stay as a friendly neighbourhood Spider-Man!",
-    isNew: true,
-    tag: "Featured",
-    oldPrice: 50,
-    price: 35,
-    categories: ["Abstract", "Colours"],
-    subcategories: ["Waves"],
-    date: new Date("March 19, 2023"),
-    sizes: ['11"x14"', 'A3 size (29.7x42 cm)', '12"x16"'],
-  }
-
   // To convert Date data type to String.
   Date.prototype.yyyymmdd = function() {
     var mm = this.getMonth() + 1; // getMonth() is zero-based
@@ -58,19 +40,19 @@ const Product = () => {
 
   // To retrieve the poster's creation date.
   const productDate = () => {
-    return productData.date.yyyymmdd();
+    return testProductData.date.yyyymmdd();
   }
 
   // To retrieve the poster's available sizes.
   const productSizes = () => {
     var sizes = "";
 
-    for(var i=0; i<productData.sizes.length; i++){
+    for(var i=0; i<testProductData.prices.length; i++){
 
-      if(i+1 == productData.sizes.length){
-        sizes += productData.sizes[i];
+      if(i+1 == testProductData.prices.length){
+        sizes += testProductData.prices[i].size;
       } else {
-        sizes = sizes + productData.sizes[i] + ", ";
+        sizes = sizes + testProductData.prices[i].size + ", ";
       }
     }
 
@@ -80,26 +62,26 @@ const Product = () => {
   const productTags = () => {
     var tags = "";
 
-    for(var i=0; i<productData.categories.length; i++){
+    for(var i=0; i<testProductData.categories.length; i++){
 
-      if(productData.subcategories.length === 0){
-        if(i+1 == productData.categories.length){
-          tags += productData.categories[i];
+      if(testProductData.subcategories.length === 0){
+        if(i+1 == testProductData.categories.length){
+          tags += testProductData.categories[i];
         } else {
-          tags += productData.categories[i] + ", ";
+          tags += testProductData.categories[i] + ", ";
         }
       } else {
-        tags += productData.categories[i] + ", ";
+        tags += testProductData.categories[i] + ", ";
       }
 
     }
 
-    for(var i=0; i<productData.subcategories.length; i++){
+    for(var i=0; i<testProductData.subcategories.length; i++){
 
-      if(i+1 == productData.subcategories.length){
-        tags += productData.subcategories[i];
+      if(i+1 == testProductData.subcategories.length){
+        tags += testProductData.subcategories[i];
       } else {
-        tags += productData.subcategories[i] + ", ";
+        tags += testProductData.subcategories[i] + ", ";
       }
       
     }
@@ -107,10 +89,47 @@ const Product = () => {
     return tags;
   }
 
-  const [selectedImg, setSelectedImg] = useState(productData.img);
+  const getSizes = () => {
+    var sizes = [];
+
+    for(var i=0; i<testProductData.prices.length; i++){
+      sizes[i] = testProductData.prices[i].size;
+    }
+
+    return sizes;
+  }
+
+  const dropDownData = () => {
+    var data = [];
+
+    for(var i=0; i<testProductData.prices.length;i++){
+      data[i] = testProductData.prices[i].size + " - $" + testProductData.prices[i].price;
+    }
+
+    return data;
+  }
+
+  const [selectedImg, setSelectedImg] = useState(testProductData.img);
   const [quantity, setQuantity] = useState(1);
   const [wish, setWish] = useState(false);
   const [compare, setCompare] = useState(false);
+
+  const [oldPrice, setOldPrice] = useState(testProductData.prices[0].oldPrice);
+  const [price, setPrice] = useState(testProductData.prices[0].price);
+  const [size, setSize] = useState(testProductData.prices[0].size);
+
+  const handleSizeChange = (e) => {
+    setSize(e.target.value);
+
+    var s = e.target.value;
+
+    for (var i = 0; i < testProductData.prices.length; i++) {
+      if (s.includes(testProductData.prices[i].size)) {
+        setOldPrice(testProductData.prices[i].oldPrice);
+        setPrice(testProductData.prices[i].price);
+      }
+    }
+  };
 
   return (
     <div className="product">
@@ -121,8 +140,8 @@ const Product = () => {
 
           <div className="productImages">
             <div className="images">
-                <img src={productData.img} alt="" onClick={e => setSelectedImg(productData.img)}/>
-                <img src={productData.img2} alt="" onClick={e => setSelectedImg(productData.img2)}/>
+                <img src={testProductData.img} alt="" onClick={e => setSelectedImg(testProductData.img)}/>
+                <img src={testProductData.img2} alt="" onClick={e => setSelectedImg(testProductData.img2)}/>
               </div>
 
               <div className="mainImg">
@@ -138,17 +157,46 @@ const Product = () => {
         </div>
 
         <div className="right">
-          <h1>{productData.title}</h1>
-          <span className='createdBy'>By {productData.branding}</span>
-          <span className="price" >${productData.price.toFixed(2)}</span>
+          <h1>{testProductData.title}</h1>
+          <span className='createdBy'>By {testProductData.branding}</span>
+
+          <div className="priceContainer">
+            {oldPrice !== price &&
+              <span className='oldPrice'>
+                ${oldPrice.toFixed(2)}
+              </span>
+            }
+
+            <span className="price" >${price.toFixed(2)}</span>
+          </div>
+
           <p className='itemDescription'>
-            {productData.description==="" ? "There is no description for this poster." : productData.description}
+            {testProductData.description==="" ? "There is no description for this poster." : testProductData.description}
           </p>
 
           <hr/>
 
-          <Dropdown/>
+          <div className="dropdown">
+            <form className='form'>
+                <h1 className='size'>
+                    <StraightenIcon/>
+                    SIZE
+                </h1>
 
+                {/* <select className='dropdownList' value={size} onChange={handleSizeChange}>
+                  {getSizes()?.map(a=>(
+                    <option value={a}>{a}</option>
+                  ))}
+                </select> */}
+
+                <select className='dropdownList' value={size} onChange={handleSizeChange}>
+                  {dropDownData()?.map(a=>(
+                    <option value={a}>{a}</option>
+                  ))}
+                </select>
+            </form>
+          </div>
+          
           <div className="quantity">
             <button onClick={() => setQuantity(prev => prev === 1 ? 1 : prev-1)}>-</button>
             <p>
@@ -161,16 +209,6 @@ const Product = () => {
             <AddShoppingCartIcon/>
             ADD TO CART
           </button>
-
-          {/* <Button
-            type="submit"
-            fullWidth="false"
-            variant="contained"
-            sx={{ mt: 3, mb: 2 }}
-            // color={theme.palette.primary.main}
-          >
-            ADD TO CART
-          </Button> */}
 
           <div className="links">
 
