@@ -1,17 +1,20 @@
 .launchingSoon{
     overscroll-behavior: none;
     text-align: center;
+    align-items: center;
+    justify-content: center;
     background: black;
     height: 200vh;
+    width: 100%;
 
     .milliondollarposters{
-        font-size: 50px;
+        font-size: 6vw;
         color: white;
         font-weight: bold;
     }
 
     .copyright{
-        font-size: 10px;
+        font-size: 1vw;
         color: white;
     }
 
