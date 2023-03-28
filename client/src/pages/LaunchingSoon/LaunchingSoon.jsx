@@ -5,6 +5,7 @@ import Plx from 'react-plx';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from '@mui/icons-material/Twitter';
+import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
 
 
 const LaunchingSoon = () => {
@@ -41,7 +42,7 @@ const LaunchingSoon = () => {
         <Plx
             parallaxData={[
             {
-                start: 200,
+                start: 0,
                 end: 800,
                 properties: [
                 {
@@ -82,8 +83,12 @@ const LaunchingSoon = () => {
                     startValue: 1,
                     endValue: 0,
                     property: "opacity"
-                }
-                ]
+                },
+                {
+                    startValue: 0,
+                    endValue: 100,
+                    property: "translateY"
+                }]
             }
             ]}
             style={{
@@ -99,6 +104,12 @@ const LaunchingSoon = () => {
             </h1>
 
             <p className='copyright'>© Copyright 2023. All Rights Reserved</p>
+
+            <p className='scroll'>
+                scroll down
+            </p>
+            
+            <KeyboardDoubleArrowDownIcon style={{color: "white", marginTop: "10px", fontSize: "15px"}}/>
 
         </Plx>
 
