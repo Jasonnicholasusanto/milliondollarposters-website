@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState, React } from 'react';
 import './LaunchingSoon.scss';
 import Plx from 'react-plx';
 
@@ -7,9 +7,14 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from '@mui/icons-material/Twitter';
 import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
 import zIndex from '@mui/material/styles/zIndex';
+import { display } from '@mui/system';
 
 
 const LaunchingSoon = () => {
+
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+
   return (
     <div className='launchingSoon'>
 
@@ -118,6 +123,22 @@ const LaunchingSoon = () => {
                     },
                     ]
                 },
+                {
+                    start: 800,
+                    end: 1200,
+                    properties: [
+                        {
+                            startValue: 1,
+                            endValue: 0,
+                            property: "opacity"
+                        },
+                        {
+                            startValue: 0,
+                            endValue: 100,
+                            property: "translateY"
+                        },
+                    ]
+                }
                 ]}
                 style={{
                 position: "fixed",
@@ -131,13 +152,61 @@ const LaunchingSoon = () => {
                     Launching Soon.
                 </h1>
 
+            </Plx> 
+
+            <Plx
+                parallaxData={[
+                    {
+                        start: 0,
+                        end: 800,
+                        properties: [
+                        {
+                            startValue: 0,
+                            endValue: 0,
+                            property: "opacity",
+                        },
+                        ]
+                    },
+                    {
+                        start: 800,
+                        end: 1200,
+                        properties: [
+                        {
+                            startValue: 0,
+                            endValue: 1,
+                            property: "opacity",
+                        },
+                        ]
+                    },
+                ]}
+                style={{
+                    position: "fixed",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    textAlign: "center",
+                    top: "35%",
+                    width: "100%",
+                    }}
+            >
+
+                <div className="newsletter">
+                    <h1 className='newsletterH1'>Our Newsletter</h1>
+
+                    <input type="text" className="nameInput" placeholder="Your Name" value={name} onInput={e => setName(e.target.value)}/>
+                    <br/>
+                    <input type="text" className="emailInput" placeholder="Your Email" value={email} onInput={e => setEmail(e.target.value)}/>
+                    <br/>
+                    <button className="btn">Send</button>
+                    <br/>
+                </div>
+
                 <div className="social">
                     <a target="_blank" href="https://www.instagram.com/milliondollarposters/"><InstagramIcon/></a>
                     <a href=""><FacebookIcon/></a>
                     <a href=""><TwitterIcon/></a>
                 </div> 
 
-            </Plx> 
+            </Plx>
         </div>
 
     </div>
