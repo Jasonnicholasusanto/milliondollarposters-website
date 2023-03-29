@@ -152,6 +152,12 @@ const LaunchingSoon = () => {
                     Launching Soon.
                 </h1>
 
+                <p className='scroll'>
+                    scroll down
+                </p>
+                
+                <KeyboardDoubleArrowDownIcon style={{color: "white", marginTop: "10px", fontSize: "15px"}}/>
+
             </Plx> 
 
             <Plx
