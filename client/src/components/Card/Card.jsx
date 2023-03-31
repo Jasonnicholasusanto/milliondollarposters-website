@@ -4,13 +4,13 @@ import {NavLink} from "react-router-dom";
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import StarIcon from '@mui/icons-material/Star';
 
-const Card = ({item}) => {
+const Card = ({ item }) => {
 
   const totalRatings = () => {
     var numRatings = 0;
     
     for(var i=0; i<5; i++){
-      numRatings += item.rating[i];
+      numRatings += item?.attributes.reviews.ratings[i];
     }
 
     return numRatings;
@@ -21,7 +21,7 @@ const Card = ({item}) => {
     var avg = 0;
 
     for(var i=0; i<5; i++){
-      total += (i+1) * item.rating[i];
+      total += (i+1) * item?.attributes.reviews.ratings[i];
     }
 
     avg = Math.floor(total / totalRatings());
@@ -30,21 +30,33 @@ const Card = ({item}) => {
 
   }
 
+  const itemTag = () => {
+    var isNew = item?.attributes.isNew;
+    var tagging = item?.attributes.tag;
+
+    if(isNew){
+      return "New Release";
+    } else if (tagging !== "") {
+      return tagging;
+    } else {
+      return ""
+    }
+  }
+
   return (
     <NavLink className="link" to={`/product/${item.id}`}>
         <div className="card">
             <div className="image">
-                {/* {item.isNew && <span>New Release</span>} */}
-                {item.tag !== "" && <span>{item.tag}</span>}
-                <img src={item.img} alt="" className="mainImg" />
-                <img src={item.img2} alt="" className="secondImg" />
+                {item?.attributes.isNew ? <span>New Release</span> : (item?.attributes.tag && <span>{item?.attributes.tag}</span>)}
+                <img src={process.env.REACT_APP_UPLOAD_URL+item.attributes?.img?.data?.attributes?.url} alt="" className="mainImg" />
+                <img src={process.env.REACT_APP_UPLOAD_URL+item.attributes?.img2?.data?.attributes?.url} alt="" className="secondImg" />
             </div>
 
-            { (item.title.length) > 58 ? <h2>{item.title.substring(0,55)}...</h2> : <h2>{item.title.substring(0,58)}</h2>}
+            { (item?.attributes.title.length) > 29 ? <h2>{item?.attributes.title.substring(0,26)}...</h2> : <h2>{item?.attributes.title.substring(0,29)}</h2>}
 
 
 
-            {item.branding === "" ? <h3>By {item.artist}</h3> : <h3>By {item.branding}</h3>}
+            {item?.attributes.branding === "" ? <h3>By {item?.attributes.artist}</h3> : <h3>By {item?.attributes.branding}</h3>}
 
             <div className="rating">
                 <span className="star">
@@ -68,12 +80,12 @@ const Card = ({item}) => {
             
 
             <div className="prices">
-                {item.prices[0].oldPrice !== item.prices[0].price &&
+                {item?.attributes.prices.prices[0].oldPrice !== item?.attributes.prices.prices[0].price &&
                   <h3 className='oldPrice'>
-                    ${item.prices[0].oldPrice.toFixed(2)}
+                    ${item?.attributes.prices.prices[0].oldPrice.toFixed(2)}
                   </h3>
                 }
-                <h3>${item.prices[0].price.toFixed(2)}</h3>
+                <h3>${item?.attributes.prices.prices[0].price.toFixed(2)}</h3>
             </div>
         </div>
     </NavLink>

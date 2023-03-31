@@ -26,8 +26,8 @@ export const testProductData = {
         },
         {
             size: '12"x16"',
-            oldPrice: 12.27,
-            price: 12.27,
+            oldPrice: 20,
+            price: 17.75,
         },
     ],
     rating: [0, 0, 2, 50, 79],

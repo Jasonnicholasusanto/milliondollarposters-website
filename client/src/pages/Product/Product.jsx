@@ -163,11 +163,11 @@ const Product = () => {
           <div className="priceContainer">
             {oldPrice !== price &&
               <span className='oldPrice'>
-                ${oldPrice.toFixed(2)}
+                ${(oldPrice.toFixed(2) * quantity).toFixed(2)}
               </span>
             }
 
-            <span className="price" >${price.toFixed(2)}</span>
+            <span className="price" >${(price.toFixed(2) * quantity).toFixed(2)}</span>
           </div>
 
           <p className='itemDescription'>
@@ -182,12 +182,6 @@ const Product = () => {
                     <StraightenIcon/>
                     SIZE
                 </h1>
-
-                {/* <select className='dropdownList' value={size} onChange={handleSizeChange}>
-                  {getSizes()?.map(a=>(
-                    <option value={a}>{a}</option>
-                  ))}
-                </select> */}
 
                 <select className='dropdownList' value={size} onChange={handleSizeChange}>
                   {dropDownData()?.map(a=>(

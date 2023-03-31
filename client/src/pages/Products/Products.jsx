@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import Contact from '../../components/Contact/Contact';
 import List from '../../components/List/List';
 import "./Products.scss";
+import useFetch from '../../hooks/useFetch';
 
 const Products = () => {
 
@@ -11,6 +12,10 @@ const Products = () => {
   const [maxPrice, setMaxPrice] = useState(500);
   const [sort, setSort] = useState(null);
 
+  const { data, loading, error } = useFetch(
+    `/subcategories?[filters][categories][id][$eq]=${categoryId}`
+  );
+
   return (
 
     <div className="productsContainer">
@@ -18,36 +23,26 @@ const Products = () => {
         <div className="left">
 
           <div className="filterItem">
-            <h2>Product Categories</h2>
+            <h2>Poster Materials</h2>
 
             <div className="inputItem">
               <input type="checkbox" id="1" value={1}/>
-              <label htmlFor="1">New Releases</label>
+              <label htmlFor="1">Classic Matte Paper</label>
             </div>
 
             <div className="inputItem">
               <input type="checkbox" id="2" value={2}/>
-              <label htmlFor="2">Featured</label>
+              <label htmlFor="2">Premium Matte Paper</label>
             </div>
 
             <div className="inputItem">
               <input type="checkbox" id="3" value={3}/>
-              <label htmlFor="3">Trending</label>
+              <label htmlFor="3">Classic Semi-glossy Paper</label>
             </div>
 
             <div className="inputItem">
               <input type="checkbox" id="4" value={4}/>
-              <label htmlFor="4">Sale</label>
-            </div>
-
-            <div className="inputItem">
-              <input type="checkbox" id="5" value={5}/>
-              <label htmlFor="5">Movie Quotes</label>
-            </div>
-
-            <div className="inputItem">
-              <input type="checkbox" id="6" value={6}/>
-              <label htmlFor="6">Scenery</label>
+              <label htmlFor="4">Premium Semi-glossy Paper</label>
             </div>
 
           </div>

@@ -1,9 +1,13 @@
-import React from 'react'
 import "./FeaturedProducts.scss";
 import Card from '../Card/Card.jsx';
-import { testFeaturedProducts } from '../../testData/testFeaturedProducts';
+import React from "react";
+import useFetch from '../../hooks/useFetch';
 
-const FeaturedProducts = ({type}) => {
+const FeaturedProducts = ({ type }) => {
+
+  const { data, loading, error } = useFetch(
+    `/posters?populate=*&[filters][tag][$eq]=${type}`
+  );
 
   return (
     <div className="featuredProducts">
@@ -24,7 +28,9 @@ const FeaturedProducts = ({type}) => {
         </div>
 
         <div className="bottom">
-          {testFeaturedProducts.map(item=>(
+          {error ? "Oops! Something went wrong." : 
+          (loading ? "loading" : 
+          data?.map((item) => 
             <Card item={item} key={item.id}/>
           ))}
         </div>

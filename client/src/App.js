@@ -29,11 +29,10 @@ import LaunchingSoon from "./pages/LaunchingSoon/LaunchingSoon";
 const Layout = () => {
   return (
     <div className="app">
-      {/* <ComingSoon/> */}
-      <LaunchingSoon/>
-      {/* <NavBar/>
+      {/* <LaunchingSoon/> */}
+      <NavBar/>
       <Outlet/>
-      <Footer2/> */}
+      <Footer2/>
     </div>
   )
 }

@@ -8,6 +8,7 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
 import zIndex from '@mui/material/styles/zIndex';
 import { display } from '@mui/system';
+import Newsletter from '../../components/Newsletter/Newsletter';
 
 
 const LaunchingSoon = () => {
@@ -195,16 +196,7 @@ const LaunchingSoon = () => {
                     }}
             >
 
-                <div className="newsletter">
-                    <h1 className='newsletterH1'>Our Newsletter</h1>
-
-                    <input type="text" className="nameInput" placeholder="Your Name" value={name} onInput={e => setName(e.target.value)}/>
-                    <br/>
-                    <input type="text" className="emailInput" placeholder="Your Email" value={email} onInput={e => setEmail(e.target.value)}/>
-                    <br/>
-                    <button className="btn">Send</button>
-                    <br/>
-                </div>
+                <Newsletter/>
 
                 <div className="social">
                     <a target="_blank" href="https://www.instagram.com/milliondollarposters/"><InstagramIcon/></a>
