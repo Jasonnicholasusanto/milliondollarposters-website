@@ -10,6 +10,8 @@ import Contact from "../../components/Contact/Contact.jsx";
 import Review from '../../components/Review/Review';
 import { testProductData } from '../../testData/testProductData';
 import StraightenIcon from '@mui/icons-material/Straighten';
+import { useParams } from "react-router-dom";
+import useFetch from '../../hooks/useFetch';
 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
@@ -26,6 +28,13 @@ const theme = createTheme({
 });
 
 const Product = () => {
+  const id = useParams().id;
+
+  const { data, loading, error } = useFetch(
+    `/products/${id}`
+  );
+
+  console.log(data);
 
   // To convert Date data type to String.
   Date.prototype.yyyymmdd = function() {

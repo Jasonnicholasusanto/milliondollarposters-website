@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Contact from '../../components/Contact/Contact';
 import List from '../../components/List/List';
@@ -11,10 +11,25 @@ const Products = () => {
   const categoryId = parseInt(useParams().id);
   const [maxPrice, setMaxPrice] = useState(500);
   const [sort, setSort] = useState(null);
+  const [selectedSubCats, setSelectedSubCats] = useState([]);
+
 
   const { data, loading, error } = useFetch(
-    `/subcategories?[filters][categories][id][$eq]=${categoryId}`
+    `/sub-categories?filters[poster_materials][id][$eq]=${categoryId}`
   );
+
+  const handleChange = (e) => {
+    const value = e.target.value;
+    const isChecked = e.target.checked;
+
+    setSelectedSubCats(
+      isChecked 
+        ? [...selectedSubCats, value] 
+        : selectedSubCats.filter((item) => item !== value)
+    );
+  };
+
+  console.log(selectedSubCats);
 
   return (
 
@@ -23,27 +38,14 @@ const Products = () => {
         <div className="left">
 
           <div className="filterItem">
-            <h2>Poster Materials</h2>
+            <h2>Poster Categories</h2>
 
-            <div className="inputItem">
-              <input type="checkbox" id="1" value={1}/>
-              <label htmlFor="1">Classic Matte Paper</label>
-            </div>
-
-            <div className="inputItem">
-              <input type="checkbox" id="2" value={2}/>
-              <label htmlFor="2">Premium Matte Paper</label>
-            </div>
-
-            <div className="inputItem">
-              <input type="checkbox" id="3" value={3}/>
-              <label htmlFor="3">Classic Semi-glossy Paper</label>
-            </div>
-
-            <div className="inputItem">
-              <input type="checkbox" id="4" value={4}/>
-              <label htmlFor="4">Premium Semi-glossy Paper</label>
-            </div>
+            {data?.map((item) => (
+              <div className="inputItem" key={item.id}>
+                <input type="checkbox" id={item.id} value={item.id} onChange={handleChange}/>
+                <label htmlFor={item.id}>{item.attributes.title}</label>
+              </div>
+            ))}
 
           </div>
 
@@ -59,25 +61,27 @@ const Products = () => {
           <div className="filterItem">
             <h2>Sort by</h2>
             <div className="inputItem">
-              <input type="radio" id="asc" value="asc" name="price" onChange={e => setSort("asc")}/>
+              <input type="radio" id="asc" value="asc" name="price" onChange={(e) => setSort("asc")}/>
               <label htmlFor="asc">Price (Lowest first)</label>
             </div>
 
             <div className="inputItem">
-              <input type="radio" id="desc" value="desc" name="price" onChange={e => setSort("desc")}/>
+              <input type="radio" id="desc" value="desc" name="price" onChange={(e) => setSort("desc")}/>
               <label htmlFor="desc">Price (Highest first)</label>
             </div>
           </div>
         </div>
 
         <div className="right">
-          <img 
+          {/* <img 
             className='categoryImg' 
             src="https://images.pexels.com/photos/310435/pexels-photo-310435.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
             alt=""
-          />
+          /> */}
 
-          <List categoryId={categoryId} maxPrice={maxPrice} sort={sort} />
+          <h1>Classic Matte Paper Posters</h1>
+
+          <List categoryId={categoryId} maxPrice={maxPrice} sort={sort} subCats={selectedSubCats} />
         </div>
       </div>
 

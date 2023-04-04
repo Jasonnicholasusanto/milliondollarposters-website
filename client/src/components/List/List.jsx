@@ -1,24 +1,32 @@
-import React from 'react'
+import React, { useState } from 'react';
 import "./List.scss";
 import Card from "../Card/Card.jsx";
-import { testData } from '../../testData/testData';
 import useFetch from '../../hooks/useFetch';
 
-const List = () => {
+const List = ({ subCats, maxPrice, sort, categoryId }) => {
+
+    let query = `/posters?populate=*&[filters][poster_materials][id]=${categoryId}${subCats.map(
+        (item) => `&[filters][sub_categories][id][$eq]=${item}`
+    )}&[filters][price][$lte]=${maxPrice}`
+
+    if (sort !== null) {
+        query += `&sort=price:${sort}`;
+    }
 
     const { data, loading, error } = useFetch(
-        `/posters?populate=*&`
-      );
+        query
+    );
 
     return (
         <div className="list">
             {error ? "Oops! Something went wrong." : 
-            (loading ? "loading" : 
+            (loading ? "loading..." : 
             data?.map((item) => 
                 <Card item={item} key={item.id}/>
-            ))}
-
+            ))}  
         </div>
+
+        // Need to implement a message where if there is no items after placing in filters, then state "no items found".
     )
 }
 

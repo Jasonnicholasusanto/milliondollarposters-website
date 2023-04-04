@@ -1,5 +1,4 @@
-import * as React from 'react';
-import Avatar from '@mui/material/Avatar';
+import React, { useState } from 'react';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
@@ -9,11 +8,13 @@ import Link from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Contact from '../../components/Contact/Contact';
 import './Signup.scss';
+import bcrypt from 'bcryptjs';
+import { postSignup } from '../../hooks/postSignup.js';
+import useFetch from '../../hooks/useFetch';
 
 function Copyright(props) {
   return (
@@ -41,16 +42,62 @@ const theme = createTheme({
     },
 });
 
-export default function SignIn() {
+export default function SignUp() {
 
-  const handleSubmit = (event) => {
+  const { data, loading, error } = useFetch(
+    // "/users-permissions/roles"
+    `/posters?populate=*&`
+  );
+
+  console.log(data);
+
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [updates, setUpdates] = useState(false);
+  const [password, setPassword] = useState('');
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    
     const data = new FormData(event.currentTarget);
+
+    const saltRounds = 10;
+    const password = data.get('password');
+    const hashedPassword = bcrypt.hashSync(password, saltRounds);
+    let consent = '';
+
+    if(updates){
+      consent = 'yes';
+    } else {
+      consent = 'no';
+    }
+
     console.log({
+      firstName: data.get('firstName'),
+      lastName: data.get('lastName'),
+      username: data.get('username'),
       email: data.get('email'),
-      password: data.get('password'),
+      password: hashedPassword,
+      updates: consent,
     });
+
+    await postSignup(firstName, lastName, username, email, password, consent);
+
+    setFirstName('');
+    setLastName('');
+    setUsername('');
+    setEmail('');
+    setPassword('');
+
+    setSubmitted(true);
   };
+
+  // Before posting the username to the back-end, we must also check if the username is available.
+  // After a user signs up, we must verify their email address.
+  // Current problem is cannot fetch user roles.
 
   return (
     <div className="loginContainer">
@@ -81,9 +128,6 @@ export default function SignIn() {
                 alignItems: 'center',
                 }}
             >
-                {/* <Avatar sx={{ m: 1, bgcolor: 'black' }}>
-                    <LockOutlinedIcon />
-                </Avatar> */}
 
                 <h1>
                     $M
@@ -105,6 +149,8 @@ export default function SignIn() {
                       id="firstName"
                       label="First Name"
                       autoFocus
+                      value={firstName}
+                      onChange={e => setFirstName(e.target.value)}
                     />
                   </Grid>
 
@@ -117,6 +163,8 @@ export default function SignIn() {
                       label="Last Name"
                       name="lastName"
                       autoComplete="family-name"
+                      value={lastName}
+                      onChange={e => setLastName(e.target.value)}
                     />
                   </Grid>
                 </Grid>
@@ -129,6 +177,8 @@ export default function SignIn() {
                       id="username"
                       label="Username"
                       autoFocus
+                      value={username}
+                      onChange={e => setUsername(e.target.value)}
                     />
 
                   <TextField
@@ -140,6 +190,8 @@ export default function SignIn() {
                       name="email"
                       autoComplete="email"
                       autoFocus
+                      value={email}
+                      onChange={e => setEmail(e.target.value)}
                   />
 
                   <TextField
@@ -151,10 +203,16 @@ export default function SignIn() {
                       type="password"
                       id="password"
                       autoComplete="current-password"
+                      value={password}
+                      onChange={e => setPassword(e.target.value)}
                   />
                   <FormControlLabel
+                      name="updates"
+                      id="updates"
                       control={<Checkbox value="remember" color="primary" />}
                       label="I would like to receive updates via email."
+                      value={updates}
+                      onChange={() => setUpdates(!updates)}
                   />
 
                   <Button
@@ -166,10 +224,6 @@ export default function SignIn() {
                   >
                       SIGN UP
                   </Button>
-
-                  {/* <button className="loginButton">
-                      SIGN UP
-                  </button> */}
 
                   <Grid container>
                       <Grid item>
@@ -183,6 +237,7 @@ export default function SignIn() {
             </Box>
             </Grid>
         </Grid>
+
         </ThemeProvider>
 
         <Contact className="contactContainer"/>
@@ -190,182 +245,3 @@ export default function SignIn() {
 
   );
 }
-
-
-
-
-
-
-
-
-// import * as React from 'react';
-// import Avatar from '@mui/material/Avatar';
-// import Button from '@mui/material/Button';
-// import CssBaseline from '@mui/material/CssBaseline';
-// import TextField from '@mui/material/TextField';
-// import FormControlLabel from '@mui/material/FormControlLabel';
-// import Checkbox from '@mui/material/Checkbox';
-// import Link from '@mui/material/Link';
-// import Grid from '@mui/material/Grid';
-// import Box from '@mui/material/Box';
-// import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-// import Typography from '@mui/material/Typography';
-// import Container from '@mui/material/Container';
-// import { createTheme, ThemeProvider } from '@mui/material/styles';
-// import Contact from '../../components/Contact/Contact';
-// import './Signup.scss';
-
-// function Copyright(props) {
-//   return (
-//     <Typography variant="body2" color="text.secondary" align="center" {...props}>
-//       {'Copyright © '}
-//       <Link color="inherit" href="https://mui.com/">
-//         MillionDollarPosters
-//       </Link>{' '}
-//       {new Date().getFullYear()}
-//       {'.'}
-//     </Typography>
-//   );
-// }
-
-// const theme = createTheme({
-//   palette: {
-//     primary: {
-//     main: '#000000',
-//     darker: '#000000',
-//     },
-//     secondary: {
-//     main: '#ffffff',
-//     },
-// },
-// });
-
-// export default function SignUp() {
-//   const handleSubmit = (event) => {
-//     event.preventDefault();
-//     const data = new FormData(event.currentTarget);
-//     console.log({
-//       email: data.get('email'),
-//       password: data.get('password'),
-//     });
-//   };
-
-//   return (
-//     <div className="signupContainer">
-
-//       <div className="signup">
-//         <ThemeProvider theme={theme}>
-//           <Container component="main" maxWidth="xs">
-//             <CssBaseline />
-//             <Box
-//               sx={{
-//                 marginTop: 8,
-//                 display: 'flex',
-//                 flexDirection: 'column',
-//                 alignItems: 'center',
-//               }}
-//             >
-//               <Avatar sx={{ m: 1, bgcolor: 'primary.main' }}>
-//                 <LockOutlinedIcon />
-//               </Avatar>
-//               <Typography component="h1" variant="h5">
-//                 Sign up
-//               </Typography>
-//               <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
-//                 <Grid container spacing={2}>
-//                   <Grid item xs={12} sm={6}>
-//                     <TextField
-//                       autoComplete="given-name"
-//                       name="firstName"
-//                       required
-//                       fullWidth
-//                       id="firstName"
-//                       label="First Name"
-//                       autoFocus
-//                     />
-//                   </Grid>
-
-//                   <Grid item xs={12} sm={6}>
-//                     <TextField
-//                       required
-//                       fullWidth
-//                       id="lastName"
-//                       label="Last Name"
-//                       name="lastName"
-//                       autoComplete="family-name"
-//                     />
-//                   </Grid>
-
-//                   <Grid item xs={12}>
-//                     <TextField
-//                       required
-//                       fullWidth
-//                       id="email"
-//                       label="Email Address"
-//                       name="email"
-//                       autoComplete="email"
-//                     />
-//                   </Grid>
-
-//                   <Grid item xs={12}>
-//                     <TextField
-//                       name="firstName"
-//                       required
-//                       fullWidth
-//                       id="username"
-//                       label="Username"
-//                       autoFocus
-//                     />
-//                   </Grid>
-
-//                   <Grid item xs={12}>
-//                     <TextField
-//                       required
-//                       fullWidth
-//                       name="password"
-//                       label="Password"
-//                       type="password"
-//                       id="password"
-//                       autoComplete="new-password"
-//                     />
-//                   </Grid>
-
-//                   <Grid item xs={12}>
-//                     <FormControlLabel
-//                       control={<Checkbox value="allowExtraEmails" color="primary" />}
-//                       label="I would like to receive updates via email."
-//                     />
-//                   </Grid>
-//                 </Grid>
-
-//                 {/* <Button
-//                   type="submit"
-//                   fullWidth
-//                   variant="contained"
-//                   sx={{ mt: 3, mb: 2 }}
-//                 >
-//                   Sign Up
-//                 </Button> */}
-
-//                 <button className='signupButton'>
-//                   SIGN UP
-//                 </button>
-
-//                 <Grid container>
-//                   <Grid item>
-//                     <Link href="/log-in" variant="body2">
-//                       Already have an account? Sign in
-//                     </Link>
-//                   </Grid>
-//                 </Grid>
-//               </Box>
-//             </Box>
-//             <Copyright sx={{ mt: 5 }} />
-//           </Container>
-//         </ThemeProvider>
-//       </div>
-
-//       <Contact/>
-//     </div>
-//   );
-// }

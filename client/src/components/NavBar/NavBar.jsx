@@ -26,7 +26,7 @@ const NavBar = () => {
 
             <div className="right">
                 <div className="item">
-                    <Link className='link' to="/posters/">Posters</Link>
+                    <Link className='link' to="/posters/1">Posters</Link>
                 </div>
 
                 <div className="item">
