@@ -1,0 +1,96 @@
+{
+  "kind": "collectionType",
+  "collectionName": "posters",
+  "info": {
+    "singularName": "poster",
+    "pluralName": "posters",
+    "displayName": "poster",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "img": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "img2": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "date": {
+      "type": "date"
+    },
+    "isNew": {
+      "type": "boolean"
+    },
+    "artist": {
+      "type": "string"
+    },
+    "branding": {
+      "type": "string"
+    },
+    "tag": {
+      "type": "enumeration",
+      "enum": [
+        "Sale",
+        "Featured",
+        "Trending"
+      ]
+    },
+    "prices": {
+      "type": "json",
+      "required": false
+    },
+    "material": {
+      "type": "enumeration",
+      "enum": [
+        "Classic Matte Paper",
+        "Premium Matte Paper",
+        "Classic Semi-Glossy Paper",
+        "Premium Semi-Glossy Paper",
+        "Aluminium Print"
+      ]
+    },
+    "reviews": {
+      "type": "json"
+    },
+    "poster_materials": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::poster-material.poster-material",
+      "mappedBy": "posters"
+    },
+    "sub_categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::sub-category.sub-category",
+      "mappedBy": "posters"
+    },
+    "price": {
+      "type": "decimal"
+    }
+  }
+}

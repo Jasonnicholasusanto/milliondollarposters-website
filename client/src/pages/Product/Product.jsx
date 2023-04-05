@@ -28,13 +28,11 @@ const theme = createTheme({
 });
 
 const Product = () => {
+
   const id = useParams().id;
+  const { data, loading, error } = useFetch(`/posters/${id}?populate=*`);
 
-  const { data, loading, error } = useFetch(
-    `/products/${id}`
-  );
-
-  console.log(data);
+  console.log();
 
   // To convert Date data type to String.
   Date.prototype.yyyymmdd = function() {
@@ -58,7 +56,7 @@ const Product = () => {
 
     for(var i=0; i<testProductData.prices.length; i++){
 
-      if(i+1 == testProductData.prices.length){
+      if(i+1 === testProductData.prices.length){
         sizes += testProductData.prices[i].size;
       } else {
         sizes = sizes + testProductData.prices[i].size + ", ";
@@ -68,13 +66,14 @@ const Product = () => {
     return sizes;
   }
 
+  // To retrieve the product's tags
   const productTags = () => {
     var tags = "";
 
     for(var i=0; i<testProductData.categories.length; i++){
 
       if(testProductData.subcategories.length === 0){
-        if(i+1 == testProductData.categories.length){
+        if(i+1 === testProductData.categories.length){
           tags += testProductData.categories[i];
         } else {
           tags += testProductData.categories[i] + ", ";
@@ -85,12 +84,12 @@ const Product = () => {
 
     }
 
-    for(var i=0; i<testProductData.subcategories.length; i++){
+    for(var j=0; j<testProductData.subcategories.length; j++){
 
-      if(i+1 == testProductData.subcategories.length){
-        tags += testProductData.subcategories[i];
+      if(j+1 === testProductData.subcategories.length){
+        tags += testProductData.subcategories[j];
       } else {
-        tags += testProductData.subcategories[i] + ", ";
+        tags += testProductData.subcategories[j] + ", ";
       }
       
     }
@@ -98,6 +97,7 @@ const Product = () => {
     return tags;
   }
 
+  // This function will get the sizes available for the poster
   const getSizes = () => {
     var sizes = [];
 
@@ -108,6 +108,7 @@ const Product = () => {
     return sizes;
   }
 
+  // This function retrieves the product's sizes as options in a dropdown element.
   const dropDownData = () => {
     var data = [];
 
@@ -118,7 +119,7 @@ const Product = () => {
     return data;
   }
 
-  const [selectedImg, setSelectedImg] = useState(testProductData.img);
+  const [selectedImg, setSelectedImg] = useState("img");
   const [quantity, setQuantity] = useState(1);
   const [wish, setWish] = useState(false);
   const [compare, setCompare] = useState(false);
@@ -127,6 +128,7 @@ const Product = () => {
   const [price, setPrice] = useState(testProductData.prices[0].price);
   const [size, setSize] = useState(testProductData.prices[0].size);
 
+  // This function handles the pricing when client chooses a certain poster size.
   const handleSizeChange = (e) => {
     setSize(e.target.value);
 
@@ -145,105 +147,117 @@ const Product = () => {
 
       <div className="wrapper">
 
-        <div className="left">
+        {loading ? ("Product loading ...") : (
+          <>
+            <div className="left">
+              <div className="productImages">
+                <div className="images">
+                    <img 
+                      src={process.env.REACT_APP_UPLOAD_URL + data?.attributes?.img?.data?.attributes?.url} 
+                      alt="" 
+                      onClick={e => setSelectedImg("img")}
+                    />
 
-          <div className="productImages">
-            <div className="images">
-                <img src={testProductData.img} alt="" onClick={e => setSelectedImg(testProductData.img)}/>
-                <img src={testProductData.img2} alt="" onClick={e => setSelectedImg(testProductData.img2)}/>
+                    <img 
+                      src={process.env.REACT_APP_UPLOAD_URL + data?.attributes?.img2?.data?.attributes?.url} 
+                      alt="" 
+                      onClick={e => setSelectedImg("img2")}
+                    />
+                  </div>
+
+                  <div className="mainImg">
+                    <img src={process.env.REACT_APP_UPLOAD_URL + data?.attributes[selectedImg]?.data?.attributes?.url} alt=""/>
+                  </div>
               </div>
 
-              <div className="mainImg">
-                <img src={selectedImg} alt=""/>
+              <div className="reviewSection">
+                <hr/>
+                <Review/>
               </div>
-          </div>
+              
+            </div>
 
-          <div className="reviewSection">
-            <hr/>
-            <Review/>
-          </div>
-          
-        </div>
+            <div className="right">
+              <h1>{data?.attributes?.title}</h1>
+              <span className='createdBy'>By {data?.attributes?.branding}</span>
 
-        <div className="right">
-          <h1>{testProductData.title}</h1>
-          <span className='createdBy'>By {testProductData.branding}</span>
+              <div className="priceContainer">
+                {oldPrice !== price &&
+                  <span className='oldPrice'>
+                    ${(oldPrice.toFixed(2) * quantity).toFixed(2)}
+                  </span>
+                }
 
-          <div className="priceContainer">
-            {oldPrice !== price &&
-              <span className='oldPrice'>
-                ${(oldPrice.toFixed(2) * quantity).toFixed(2)}
-              </span>
-            }
+                <span className="price" >${(price.toFixed(2) * quantity).toFixed(2)}</span>
+              </div>
 
-            <span className="price" >${(price.toFixed(2) * quantity).toFixed(2)}</span>
-          </div>
+              <p className='itemDescription'>
+                {data?.attributes?.description === "" ? "There is no description for this poster." : data?.attributes?.description}
+              </p>
 
-          <p className='itemDescription'>
-            {testProductData.description==="" ? "There is no description for this poster." : testProductData.description}
-          </p>
+              <hr/>
 
-          <hr/>
+              <div className="dropdown">
+                <form className='form'>
+                    <h1 className='size'>
+                        <StraightenIcon/>
+                        SIZE
+                    </h1>
 
-          <div className="dropdown">
-            <form className='form'>
-                <h1 className='size'>
-                    <StraightenIcon/>
-                    SIZE
-                </h1>
+                    <select className='dropdownList' value={size} onChange={handleSizeChange}>
+                      {dropDownData()?.map(a=>(
+                        <option value={a}>{a}</option>
+                      ))}
+                    </select>
+                </form>
+              </div>
+              
+              <div className="quantity">
+                <button onClick={() => setQuantity(prev => prev === 1 ? 1 : prev-1)}>-</button>
+                <p>
+                  {quantity}
+                </p>
+                <button onClick={() => setQuantity(prev => prev+1)}>+</button>
+              </div>
 
-                <select className='dropdownList' value={size} onChange={handleSizeChange}>
-                  {dropDownData()?.map(a=>(
-                    <option value={a}>{a}</option>
-                  ))}
-                </select>
-            </form>
-          </div>
-          
-          <div className="quantity">
-            <button onClick={() => setQuantity(prev => prev === 1 ? 1 : prev-1)}>-</button>
-            <p>
-              {quantity}
-            </p>
-            <button onClick={() => setQuantity(prev => prev+1)}>+</button>
-          </div>
+              <button className="add">
+                <AddShoppingCartIcon/>
+                ADD TO CART
+              </button>
 
-          <button className="add">
-            <AddShoppingCartIcon/>
-            ADD TO CART
-          </button>
+              <div className="links">
 
-          <div className="links">
+                <button className='wishlist' onClick={() => setWish(!wish)}>
+                  {!wish && <FavoriteBorderIcon/>}
+                  {wish && <FavoriteIcon/>}
+                  ADD TO WISHLIST
+                </button>
 
-            <button className='wishlist' onClick={() => setWish(!wish)}>
-              {!wish && <FavoriteBorderIcon/>}
-              {wish && <FavoriteIcon/>}
-              ADD TO WISHLIST
-            </button>
+                {/* <button className="compare" onClick={() => setCompare(!compare)}>
+                  <CompareArrowsIcon/>
+                  ADD TO COMPARE
+                </button> */}
 
-            {/* <button className="compare" onClick={() => setCompare(!compare)}>
-              <CompareArrowsIcon/>
-              ADD TO COMPARE
-            </button> */}
+              </div>
 
-          </div>
+              <div className="info">
+                <span>Artist: {data?.attributes?.artist}</span>
+                <span>Date: {data?.attributes?.date}</span>
+                <span>Poster Material: {data?.attributes?.material}</span>
+                <span>Sizes: {productSizes()}</span>
+                <span>Tags: {productTags()}</span>
+              </div>
 
-          <div className="info">
-            <span>Artist: Jason Nicholas Susanto</span>
-            <span>Date: {productDate()}</span>
-            <span>Sizes: {productSizes()}</span>
-            <span>Tags: {productTags()}</span>
-          </div>
+              <hr />
 
-          <hr />
+              <Accordion/>
 
-          <Accordion/>
-
-        </div>
+            </div>
+          </>
+        )}
       </div>
 
       <Contact/>
-
     </div>
   )
 }

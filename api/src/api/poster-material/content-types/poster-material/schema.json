@@ -1,0 +1,44 @@
+{
+  "kind": "collectionType",
+  "collectionName": "poster_materials",
+  "info": {
+    "singularName": "poster-material",
+    "pluralName": "poster-materials",
+    "displayName": "posterMaterial",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "sub_categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::sub-category.sub-category",
+      "mappedBy": "poster_materials"
+    },
+    "posters": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::poster.poster",
+      "inversedBy": "poster_materials"
+    },
+    "img": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

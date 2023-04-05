@@ -44,7 +44,7 @@ const Card = ({ item }) => {
   }
 
   return (
-    <NavLink className="link" to={`/product/${item.id}`}>
+    <NavLink className="link" to={`/poster/${item.id}`}>
         <div className="card">
             <div className="image">
                 {item?.attributes.isNew ? <span>New Release</span> : (item?.attributes.tag && <span>{item?.attributes.tag}</span>)}
