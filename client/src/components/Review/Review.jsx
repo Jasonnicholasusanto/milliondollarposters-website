@@ -3,7 +3,32 @@ import StarBorderIcon from '@mui/icons-material/StarBorder';
 import StarIcon from '@mui/icons-material/Star';
 import './Review.scss';
 
-const Review = ({average, ratings}) => {
+const Review = ({ ratings }) => {
+
+    console.log("Ratings: " + ratings);
+
+    const totalRatings = () => {
+        var numRatings = 0;
+        
+        for(var i=0; i<5; i++){
+          numRatings += ratings[i];
+        }
+    
+        return numRatings;
+      }
+
+    const average = () => {
+        var total = 0;
+        var avg = 0;
+
+        for(var i=0; i<5; i++){
+            total += (i+1) * ratings[i];
+        }
+
+        avg = Math.floor(total / totalRatings());
+
+        return avg;
+    }
 
     function countRatings() {
         var numRatings = 0;
@@ -11,8 +36,6 @@ const Review = ({average, ratings}) => {
         for(var i=0; i < 5; i++){
             numRatings += ratings[i];
         }
-
-        console.log(numRatings);
     
         return numRatings;
     };
@@ -33,19 +56,19 @@ const Review = ({average, ratings}) => {
 
             <div className="stars">
                 <span className="star">
-                    {average >= 1 ? <StarIcon/> : <StarBorderIcon/>}
+                    {average() >= 1 ? <StarIcon/> : <StarBorderIcon/>}
                 </span>
                 <span className="star">
-                    {average >= 2 ? <StarIcon/> : <StarBorderIcon/>}
+                    {average() >= 2 ? <StarIcon/> : <StarBorderIcon/>}
                 </span>
                 <span className="star">
-                    {average >= 3 ? <StarIcon/> : <StarBorderIcon/>}
+                    {average() >= 3 ? <StarIcon/> : <StarBorderIcon/>}
                 </span>
                 <span className="star">
-                    {average >= 4 ? <StarIcon/> : <StarBorderIcon/>}
+                    {average() >= 4 ? <StarIcon/> : <StarBorderIcon/>}
                 </span>
                 <span className="fa fa-star">
-                    {average >= 5 ? <StarIcon/> : <StarBorderIcon/>}
+                    {average() >= 5 ? <StarIcon/> : <StarBorderIcon/>}
                 </span>
             </div>
 

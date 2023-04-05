@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import "./Product.scss";
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
@@ -32,8 +32,6 @@ const Product = () => {
   const id = useParams().id;
   const { data, loading, error } = useFetch(`/posters/${id}?populate=*`);
 
-  console.log();
-
   // To convert Date data type to String.
   Date.prototype.yyyymmdd = function() {
     var mm = this.getMonth() + 1; // getMonth() is zero-based
@@ -66,32 +64,18 @@ const Product = () => {
     return sizes;
   }
 
-  // To retrieve the product's tags
+  // This function is to retrieve the product's tags.
   const productTags = () => {
     var tags = "";
+    var dataLength = data?.attributes?.sub_categories?.data?.length;
 
-    for(var i=0; i<testProductData.categories.length; i++){
-
-      if(testProductData.subcategories.length === 0){
-        if(i+1 === testProductData.categories.length){
-          tags += testProductData.categories[i];
-        } else {
-          tags += testProductData.categories[i] + ", ";
-        }
-      } else {
-        tags += testProductData.categories[i] + ", ";
-      }
-
-    }
-
-    for(var j=0; j<testProductData.subcategories.length; j++){
-
-      if(j+1 === testProductData.subcategories.length){
-        tags += testProductData.subcategories[j];
-      } else {
-        tags += testProductData.subcategories[j] + ", ";
-      }
+    for (var i = 0; i<dataLength; i++){
       
+      if(i+1 === dataLength){
+        tags += data?.attributes?.sub_categories?.data[i]?.attributes?.title;
+      } else {
+        tags += data?.attributes?.sub_categories?.data[i]?.attributes?.title + ", ";
+      }
     }
 
     return tags;
@@ -110,34 +94,41 @@ const Product = () => {
 
   // This function retrieves the product's sizes as options in a dropdown element.
   const dropDownData = () => {
-    var data = [];
+    var pricesData = [];
+    var pricesDataLength = data?.attributes?.prices?.prices?.length;
 
-    for(var i=0; i<testProductData.prices.length;i++){
-      data[i] = testProductData.prices[i].size + " - $" + testProductData.prices[i].price;
+    for(var i=0; i<pricesDataLength; i++){
+      pricesData[i] = data?.attributes?.prices?.prices[i]?.size + " - $" + data?.attributes?.prices?.prices[i]?.price.toFixed(2);
     }
 
-    return data;
+    return pricesData;
   }
 
   const [selectedImg, setSelectedImg] = useState("img");
   const [quantity, setQuantity] = useState(1);
   const [wish, setWish] = useState(false);
   const [compare, setCompare] = useState(false);
+  const [oldPrice, setOldPrice] = useState();
+  const [price, setPrice] = useState(data?.attributes?.price);
+  const [size, setSize] = useState();
 
-  const [oldPrice, setOldPrice] = useState(testProductData.prices[0].oldPrice);
-  const [price, setPrice] = useState(testProductData.prices[0].price);
-  const [size, setSize] = useState(testProductData.prices[0].size);
+  useEffect(() => {
+    setPrice(data?.attributes?.prices?.prices[0]?.price);
+    setOldPrice(data?.attributes?.prices?.prices[0]?.oldPrice);
+    setSize(data?.attributes?.prices?.prices[0]?.size);
+  }, [data])
 
   // This function handles the pricing when client chooses a certain poster size.
   const handleSizeChange = (e) => {
     setSize(e.target.value);
 
     var s = e.target.value;
+    var pricesDataLength = data?.attributes?.prices?.prices?.length;
 
-    for (var i = 0; i < testProductData.prices.length; i++) {
-      if (s.includes(testProductData.prices[i].size)) {
-        setOldPrice(testProductData.prices[i].oldPrice);
-        setPrice(testProductData.prices[i].price);
+    for (var i = 0; i < pricesDataLength; i++) {
+      if (s.includes(data?.attributes?.prices?.prices[i]?.size)) {
+        setOldPrice(data?.attributes?.prices?.prices[i]?.oldPrice);
+        setPrice(data?.attributes?.prices?.prices[i]?.price);
       }
     }
   };
@@ -172,7 +163,7 @@ const Product = () => {
 
               <div className="reviewSection">
                 <hr/>
-                <Review/>
+                <Review ratings={data?.attributes?.reviews?.ratings}/>
               </div>
               
             </div>
@@ -188,7 +179,7 @@ const Product = () => {
                   </span>
                 }
 
-                <span className="price" >${(price.toFixed(2) * quantity).toFixed(2)}</span>
+                <span className="price" >${(price * quantity).toFixed(2)}</span>
               </div>
 
               <p className='itemDescription'>

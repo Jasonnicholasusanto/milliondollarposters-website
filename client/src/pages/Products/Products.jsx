@@ -29,8 +29,6 @@ const Products = () => {
     );
   };
 
-  console.log(selectedSubCats);
-
   return (
 
     <div className="productsContainer">
