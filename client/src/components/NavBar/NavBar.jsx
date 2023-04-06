@@ -12,10 +12,6 @@ const NavBar = () => {
 
     const [open, setOpen] = useState(false);
 
-    const changeVisibility = () => {
-        setOpen(!open);
-    }
-
   return (
     <div className='navbar'>
         <div className="wrapper">
@@ -25,8 +21,29 @@ const NavBar = () => {
             </div>
 
             <div className="right">
-                <div className="item">
-                    <Link className='link' to="/posters/1">Posters</Link>
+
+                <div className="dropdownItem">
+                    <Link className='dropbtn' to="/posters/1">Digital Planners</Link>
+
+                    <div class="dropdown-content">
+                        <a href="#">Daily Planners</a>
+                        <a href="#">Monthly Planners</a>
+                        <a href="#">Yearly Planners</a>
+                        <a href="#">Habit Trackers</a>
+                        <a href="#">Others</a>
+                    </div>
+                </div>
+
+                <div className="dropdownItem">
+                    <Link className='dropbtn' to="/posters/">Posters</Link>
+
+                    <div class="dropdown-content">
+                        <a href="/posters/1">Classic Matte Paper</a>
+                        <a href="/posters/2">Premium Matte Paper</a>
+                        <a href="/posters/3">Classic Semi-Glossy Paper</a>
+                        <a href="/posters/4">Premium Semi-Glossy Paper</a>
+                        <a href="/posters/5">Aluminium Prints</a>
+                    </div>
                 </div>
 
                 <div className="item">

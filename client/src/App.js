@@ -63,10 +63,14 @@ const router = createBrowserRouter([
         path:"/frequently-asked-questions/",
         element:<FAQs/>,
       },
-      // Products page route
+      // Posters page route
       {
-        // path:"/products/:id",
         path:"/posters/:id",
+        element:<Products/>,
+      },
+      // Fetching all posters
+      {
+        path:"/posters/",
         element:<Products/>,
       },
       // Product page route
