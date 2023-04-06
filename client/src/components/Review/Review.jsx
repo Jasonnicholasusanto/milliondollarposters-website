@@ -5,8 +5,6 @@ import './Review.scss';
 
 const Review = ({ ratings }) => {
 
-    console.log("Ratings: " + ratings);
-
     const totalRatings = () => {
         var numRatings = 0;
         

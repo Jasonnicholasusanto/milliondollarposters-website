@@ -1,15 +1,11 @@
 import {
   createBrowserRouter,
   RouterProvider,
-  Route,
   Outlet,
 } from "react-router-dom";
 
 import Home from "./pages/Home/Home";
-import Products from "./pages/Products/Products";
-import Product from "./pages/Product/Product";
 import NavBar from "./components/NavBar/NavBar";
-import Footer from "./components/Footer/Footer";
 import Footer2 from "./components/Footer2/Footer2";
 import "./app.scss";
 import ShoppingBag from "./pages/ShoppingBag/ShoppingBag";
@@ -18,10 +14,11 @@ import Login from "./pages/Login/Login";
 import Checkout from "./pages/Checkout/Checkout";
 import AboutUs from "./pages/AboutUs/AboutUs";
 import ContactUs from "./pages/ContactUs/ContactUs";
-import FAQ from "./pages/FAQ/FAQ";
 import FAQs from "./pages/FAQs/FAQs";
-import ComingSoon from "./pages/ComingSoon/ComingSoon";
-import LaunchingSoon from "./pages/LaunchingSoon/LaunchingSoon";
+import DigitalPlanners from "./pages/DigitalPlanners/DigitalPlanners";
+import DigitalPlanner from "./pages/DigitalPlanner/DigitalPlanner";
+import Poster from "./pages/Poster/Poster";
+import Posters from "./pages/Posters/Posters";
 
 // Customizing the layout of the web page: Navigation bar and Footer stays the same
 // in all pages. However, we utilize Outlet from react-router-dom to change the web pages'
@@ -63,16 +60,35 @@ const router = createBrowserRouter([
         path:"/frequently-asked-questions/",
         element:<FAQs/>,
       },
-      // Products page route
+      // Posters page route
       {
-        // path:"/products/:id",
         path:"/posters/:id",
-        element:<Products/>,
+        element:<Posters/>,
+      },
+      // Fetching all posters
+      {
+        path:"/posters/",
+        element:<Posters/>,
       },
       // Product page route
       {
         path:"/poster/:id",
-        element:<Product/>,
+        element:<Poster/>,
+      },
+      // Posters page route
+      {
+        path:"/digital-planners/:id",
+        element:<DigitalPlanners/>,
+      },
+      // Fetching all posters
+      {
+        path:"/digital-planners/",
+        element:<DigitalPlanners/>,
+      },
+      // Product page route
+      {
+        path:"/digital-planner/:id",
+        element:<DigitalPlanner/>,
       },
       {
         path:"/cart/",
